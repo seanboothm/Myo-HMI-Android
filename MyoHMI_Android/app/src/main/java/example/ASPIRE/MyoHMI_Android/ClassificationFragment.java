@@ -115,11 +115,11 @@ public class ClassificationFragment extends Fragment {
             "Rest",
             "Fist",
             "Point",
-            "Open Hand",
-            "Wave In",
-            "Wave Out",
-            "Supination",
-            "Pronation"
+//            "Open Hand",
+//            "Wave In",
+//            "Wave Out",
+//            "Supination",
+//            "Pronation"
     };
 
     String[] classifier_options = new String[]{
@@ -296,13 +296,15 @@ public class ClassificationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-                Intent batteryStatus = getContext().registerReceiver(null, ifilter);
-                int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-                int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-                float batteryPct = level / (float)scale;
-                Log.d("Battery$$$ ", String.valueOf(batteryPct));
-                Toast.makeText(getActivity(), "Battery Level "+String.valueOf(batteryPct), Toast.LENGTH_SHORT).show();
+                openFolder();
+
+//                IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+//                Intent batteryStatus = getContext().registerReceiver(null, ifilter);
+//                int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+//                int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+//                float batteryPct = level / (float)scale;
+//                Log.d("Battery$$$ ", String.valueOf(batteryPct));
+//                Toast.makeText(getActivity(), "Battery Level "+String.valueOf(batteryPct), Toast.LENGTH_SHORT).show();
             }
         });
         return v;

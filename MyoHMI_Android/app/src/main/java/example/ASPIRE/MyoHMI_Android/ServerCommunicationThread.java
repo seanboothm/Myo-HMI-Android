@@ -50,6 +50,7 @@ public class ServerCommunicationThread extends Thread {
                         message = mMessages.get(0);
                         mMessages.remove(0);
                     }
+                    System.out.println(Arrays.toString(message));
                     output.write(message);
                 }
 

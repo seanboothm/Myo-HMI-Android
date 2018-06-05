@@ -92,6 +92,8 @@ public class FeatureCalculator {
 
     byte[] sendWindow = new byte[0];
 
+    static File predFile;
+
     public FeatureCalculator() {}
 
     public FeatureCalculator(View v, Activity act) {
@@ -102,7 +104,9 @@ public class FeatureCalculator {
         uploadButton = (ImageButton) view.findViewById(R.id.im_upload);
         resetButton =  (ImageButton) view.findViewById(R.id.im_reset);
         saver = new SaveData(act);
-        connect();
+
+        predFile = saver.makeFile("predictions");
+//        connect();
     }
 
     public FeatureCalculator(Plotter plot) {
@@ -173,32 +177,31 @@ public class FeatureCalculator {
         if (ibuf == winnext)//start calculating
         {
 
-            /* Beginning of cloud stuff */
+            /*********************************************** Beginning of cloud stuff ***********************************************/
 
             startCalc = System.nanoTime();
-            byte cloudControl = 0;
-            if (getClassify()) {
-                cloudControl = 1;
-            } else if (getTrain()) {
-                cloudControl = 2;
-            }
-            long clientTime = (System.nanoTime() - time1);
-            sendWindow = ArrayUtils.addAll(sendWindow, longToBytes(clientTime));
-//            thread.send(sendWindow);// TCP Connection
-            //new Lambda.LTask().execute(sendWindow);
-            sendWindow = new byte[1];
-            sendWindow[0] = cloudControl;
+//            byte cloudControl = 0;
+//            if (getClassify()) {
+//                cloudControl = 1;
+//            } else if (getTrain()) {
+//                cloudControl = 2;
+//            }
+//            long clientTime = (System.nanoTime() - time1);
+//            sendWindow = ArrayUtils.addAll(sendWindow, longToBytes(clientTime));
+//            thread.send(sendWindow); //TCP Connection
+//            //new Lambda.LTask().execute(sendWindow); //Calls Lambda
+//            sendWindow = new byte[1];
+//            sendWindow[0] = cloudControl;
 
-            /* End of cloud stuff */
+            /********************************************** End of cloud stuff ***********************************************/
 
-            /* Start of Local Process*/
+            /*********************************************** Start of Local Process***********************************************/
 
             lastCall = winnext;
             firstCall = (lastCall - winsize + bufsize + 1) % bufsize;
-
-//            startFeature = System.nanoTime();
-
+            startFeature = System.nanoTime();
             featureVector = featCalc(samplebuffer);
+
 //            thread.send(windowFeat);
 
             imuFeatureVector = featCalcIMU(imusamplebuffer);
@@ -220,7 +223,7 @@ public class FeatureCalculator {
                 pushClassifier(aux[0]);
             }
 
-            /* End of Local Processes */
+            /*********************************************** End of Local Processes ***********************************************/
 
             winnext = (winnext + winincr) % bufsize;
         }
@@ -243,7 +246,9 @@ public class FeatureCalculator {
 
         //System.out.print("," + (System.nanoTime() - startClass)); //classification time, 2nd column
         //System.out.println("Prediction: " + prediction);
-        //System.out.println("," + (System.nanoTime() - startCalc)); //total calculation time, 3rd column
+        System.out.println("," + (System.nanoTime() - startCalc)); //total calculation time, 3rd column
+
+        saver.addToFile(predFile, String.valueOf(System.nanoTime()-startCalc) + "," + System.currentTimeMillis());
 
         if (liveView != null) {
             classAct.runOnUiThread(new Runnable() {
@@ -473,10 +478,10 @@ public class FeatureCalculator {
         samplesClassifier = new ArrayList<>();
         classes = new ArrayList<>();
         liveView.setText("");
-//        thread.close();
-//        clientThread.close();
-//        thread.start();
-//        clientThread.start();
+        thread.close();
+        clientThread.close();
+        thread.start();
+        clientThread.start();
     }
 
     public void pushIMUFeatureBuffer(DataVector data){
