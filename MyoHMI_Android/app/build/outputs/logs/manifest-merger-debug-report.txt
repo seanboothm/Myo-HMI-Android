@@ -23,7 +23,7 @@ MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Alex\
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Alex\.android\build-cache\e986d9c8d795235634b422fd43f3eacceeef7a4a\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.2.0] C:\Users\Alex\.android\build-cache\e08014b739e585b5e74547e2267bf06693a56886\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:transition:25.2.0] C:\Users\Alex\.android\build-cache\a0bdab11ea038a3fc63d1ec9551bb8411a7bf5a0\output\AndroidManifest.xml:20:5-44
-MERGED from [com.echo:holographlibrary:1.0] C:\Users\Alex\.android\build-cache\9d4e9f9be799506c8215d38b1d857f52484031c9\output\AndroidManifest.xml:6:5-8:41
+MERGED from [com.echo:HoloGraphLibrary:1.0] C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\HoloGraphLibrary\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:percent:22.2.0] C:\Users\Alex\.android\build-cache\159cae5ea98c25b4394dc9ddaaa646774430a385\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Alex\.android\build-cache\9b75be3447543e580164bf8ae08fa44387ab090f\output\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Alex\.android\build-cache\8c873932d866c63d2b79a36d7a7f9020d2f662be\output\AndroidManifest.xml:21:5-23:60
@@ -126,7 +126,7 @@ MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Alex\.android\bui
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Alex\.android\build-cache\9e98347a71e2db56f34c0acfb47461f69be5f88d\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Alex\.android\build-cache\e986d9c8d795235634b422fd43f3eacceeef7a4a\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:transition:25.2.0] C:\Users\Alex\.android\build-cache\a0bdab11ea038a3fc63d1ec9551bb8411a7bf5a0\output\AndroidManifest.xml:22:5-20
-MERGED from [com.echo:holographlibrary:1.0] C:\Users\Alex\.android\build-cache\9d4e9f9be799506c8215d38b1d857f52484031c9\output\AndroidManifest.xml:10:5-15:19
+MERGED from [com.echo:HoloGraphLibrary:1.0] C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\HoloGraphLibrary\build\intermediates\bundles\default\AndroidManifest.xml:11:5-16:19
 MERGED from [com.android.support:percent:22.2.0] C:\Users\Alex\.android\build-cache\159cae5ea98c25b4394dc9ddaaa646774430a385\output\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Alex\.android\build-cache\9b75be3447543e580164bf8ae08fa44387ab090f\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Alex\.android\build-cache\8c873932d866c63d2b79a36d7a7f9020d2f662be\output\AndroidManifest.xml:29:5-20
@@ -142,7 +142,7 @@ MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Alex\.android\b
 		ADDED from C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\src\main\AndroidManifest.xml:37:9-35
 	android:icon
 		ADDED from C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\src\main\AndroidManifest.xml:40:9-42
-		REJECTED from [com.echo:holographlibrary:1.0] C:\Users\Alex\.android\build-cache\9d4e9f9be799506c8215d38b1d857f52484031c9\output\AndroidManifest.xml:12:9-45
+		REJECTED from [com.echo:HoloGraphLibrary:1.0] C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\HoloGraphLibrary\build\intermediates\bundles\default\AndroidManifest.xml:13:9-45
 	android:largeHeap
 		ADDED from C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\src\main\AndroidManifest.xml:39:9-33
 	android:theme

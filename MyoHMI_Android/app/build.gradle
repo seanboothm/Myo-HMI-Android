@@ -32,9 +32,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.2.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.echo:holographlibrary:1.0'
+//    compile 'com.echo:holographlibrary:1.0'
     //compile 'com.github.Androguide:HoloGraphLibrary:1.0'
-    //compile project(':HoloGraphLibrary')
+    compile project(':HoloGraphLibrary')
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'com.github.haifengl:smile-core:1.0.4'
 
