@@ -321,8 +321,8 @@ public class MyoGattCallback extends BluetoothGattCallback {
             DataVector dvec2 = new DataVector(true, 2, 10, imu_data_list2, systemTime_ms);
 //            dvec1.printDataVector("IMU1");
 //            dvec2.printDataVector("IMU2");
-//            fcalc.pushIMUFeatureBuffer(dvec1);
-//            fcalc.pushIMUFeatureBuffer(dvec2);
+            fcalc.pushIMUFeatureBuffer(dvec1);
+            fcalc.pushIMUFeatureBuffer(dvec2);
         }
     }
 

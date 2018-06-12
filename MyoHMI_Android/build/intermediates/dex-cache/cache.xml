@@ -3,21 +3,21 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\libs\commons-lang3-3.6.jar"
+        jar="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/HoloGraphLibrary/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="78820525b7029b6c9234498f2fe1539f3f229eab">
+        <dex dex="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/pre-dexed/debug/classes_94ae2874cb323ce1d244db0db55a1d989173e0df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/libs/commons-lang3-3.6.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.0"
         sha1="9d28a6b23650e8a7e9063c04588ace6cf7012c17">
-        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\pre-dexed\debug\commons-lang3-3.6_53af633c1a2ccdcc48c4ef4ac623c8113ba3a9c4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\HoloGraphLibrary\build\intermediates\bundles\default\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.0"
-        sha1="81c7b9d6f74a69d67688299add0641e6ec51f888">
-        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\pre-dexed\debug\classes_f7eae76da64d36689407dd77d30e25277a22ec34.jar" />
+        <dex dex="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/pre-dexed/debug/commons-lang3-3.6_a1147228c24dae1032cf9682f0e48cb6e6373a5c.jar" />
     </item>
 
 </items>

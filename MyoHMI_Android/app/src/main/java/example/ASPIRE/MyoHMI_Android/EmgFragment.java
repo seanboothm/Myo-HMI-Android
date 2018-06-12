@@ -89,7 +89,8 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
 
         BluetoothManager mBluetoothManager = (BluetoothManager) getActivity().getSystemService(BLUETOOTH_SERVICE);
         mBluetoothAdapter = mBluetoothManager.getAdapter();
-        mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+       mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+
 
         Intent intent = getActivity().getIntent();
         deviceName = intent.getStringExtra(ListActivity.TAG);
