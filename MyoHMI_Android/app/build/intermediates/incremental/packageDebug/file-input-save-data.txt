@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jun 12 14:17:46 PDT 2018
+#Tue Jun 12 16:53:44 PDT 2018
 20.base=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar
 143.base=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/resources-debug.ap_
 493.base=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/resources-debug.ap_

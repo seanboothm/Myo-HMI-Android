@@ -75,6 +75,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
 
     private Plotter plotter;
     private ProgressBar progress;
+    public static Boolean myoConnected;
 
     private FeatureCalculator fcalc;//maybe needs to be later in process
 
@@ -237,12 +238,14 @@ public class MyoGattCallback extends BluetoothGattCallback {
                 @Override
                 public void run() {
                     textView.setText("Myo Connected");
+                    myoConnected = true;
                     progress.setVisibility(View.INVISIBLE);
                 }
             });
 //            EmgFragment emgFrag = new EmgFragment();
 //            emgFrag.clickedemg(v);
         } else {
+            myoConnected = false;
             Log.d(TAG, "onCharacteristicRead error: " + status);
         }
 

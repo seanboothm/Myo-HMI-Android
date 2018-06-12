@@ -5,6 +5,7 @@ import android.app.Activity;
 
 
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothGatt;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -85,6 +86,7 @@ public class ClassificationFragment extends Fragment {
     private TextView or_text;
     private CloudUpload cloudUpload;
     private ArrayList<Runnable> taskList = new ArrayList<Runnable>();
+
     Runnable r1;
     Runnable r2;
     //private Classifier classifier;//for making toast on this activity
@@ -153,6 +155,7 @@ public class ClassificationFragment extends Fragment {
         fcalc = new FeatureCalculator(v, getActivity());
         classifier = new Classifier(getActivity());
         saver = new SaveData(this.getContext());
+
 
         or_text = (TextView) v.findViewById(R.id.or_text);
         liveView = (TextView) v.findViewById(R.id.gesture_detected);
@@ -358,8 +361,25 @@ public class ClassificationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                openFolder();
 
+                if (MyoGattCallback.myoConnected = true){
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Myo not detected");
+                    alertDialog.setMessage("Myo armband should be connected before transferring data.");
+                    alertDialog.setIcon(R.drawable.stop_icon);
+
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }else {
+                    openFolder();
+                }
+
+
+//
 //                IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 //                Intent batteryStatus = getContext().registerReceiver(null, ifilter);
 //                int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
