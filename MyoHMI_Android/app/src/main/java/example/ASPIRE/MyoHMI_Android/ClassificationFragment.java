@@ -5,6 +5,7 @@ import android.app.Activity;
 
 
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothGatt;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -85,6 +86,7 @@ public class ClassificationFragment extends Fragment {
     private TextView or_text;
     private CloudUpload cloudUpload;
     private ArrayList<Runnable> taskList = new ArrayList<Runnable>();
+
     Runnable r1;
     Runnable r2;
     //private Classifier classifier;//for making toast on this activity
@@ -153,6 +155,7 @@ public class ClassificationFragment extends Fragment {
         fcalc = new FeatureCalculator(v, getActivity());
         classifier = new Classifier(getActivity());
         saver = new SaveData(this.getContext());
+
 
         or_text = (TextView) v.findViewById(R.id.or_text);
         liveView = (TextView) v.findViewById(R.id.gesture_detected);
@@ -263,11 +266,73 @@ public class ClassificationFragment extends Fragment {
             adapter.notifyDataSetChanged();
         });
 
+//        uploadButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v){
+//                fcalc.setClassify(false);
+//                countdown(false);
+//            }
+//        });
+
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                fcalc.setClassify(false);
-                countdown(false);
+                Button cancel;
+                Button sdCard;
+                Button cloud;
+                Button both;
+                AlertDialog.Builder upload_pop = new AlertDialog.Builder(getActivity());
+
+                View view = inflater.inflate(R.layout.upload_dialog, container, false);
+
+                cancel = (Button) view.findViewById(R.id.bt_cancel);
+                sdCard = (Button) view.findViewById(R.id.bt_sdcard);
+                cloud = (Button) view.findViewById(R.id.bt_cloud);
+                both = (Button) view.findViewById(R.id.bt_both);
+
+                File file = saver.addData(fcalc.getFeatureData());
+
+                final AlertDialog dialog = upload_pop.create();
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        file.delete();
+                        Toast.makeText(getActivity(), "Canceled", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+                sdCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+//                        saver.addData(fcalc.getSamplesClassifier(), selectedItems);
+                        Toast.makeText(getActivity(), "Saving on SDCARD!", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+                cloud.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        cloudUpload.beginUpload(file);
+                        cloudUpload.setDelete(true);
+                        Toast.makeText(getActivity(), "Saving on Cloud!", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+                both.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        cloudUpload.setDelete(false);
+                        cloudUpload.beginUpload(file);
+                        Toast.makeText(getActivity(), "Saving on SDCARD and Cloud!", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setView(view);
+                dialog.show();
             }
         });
 
@@ -296,8 +361,25 @@ public class ClassificationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                openFolder();
 
+                if (MyoGattCallback.myoConnected = true){
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Myo not detected");
+                    alertDialog.setMessage("Myo armband should be connected before transferring data.");
+                    alertDialog.setIcon(R.drawable.stop_icon);
+
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }else {
+                    openFolder();
+                }
+
+
+//
 //                IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 //                Intent batteryStatus = getContext().registerReceiver(null, ifilter);
 //                int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
