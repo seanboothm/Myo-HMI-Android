@@ -17,14 +17,14 @@ public class ServerCommunicationThread extends Thread {
 
     private boolean mRun = true;
 
-    private final String ec2ip = "35.166.162.28";
+    private final String ec2ip = "34.215.131.221";
     private final String alexHomeip = "2601:645:c100:b669:ad86:cf34:9b81:48e3";
     private final String icelabip = "192.168.0.100";//"34.213.61.15";
     private final String dragonip = "2601:645:c100:b669:0:2bff:feed:2e50";
     private final String sfStateip = "10.143.132.221";
 
     public ServerCommunicationThread() {
-        this.mServer = "10.143.128.68";
+        this.mServer = ec2ip;
     }
 
     @Override
@@ -50,9 +50,9 @@ public class ServerCommunicationThread extends Thread {
                         message = mMessages.get(0);
                         mMessages.remove(0);
                     }
-//                    System.out.println(Arrays.toString(message));
+                    System.out.println(Arrays.toString(message));
                     output.write(message);
-                    send(message);
+//                    send(message);
                 }
 
             } catch (UnknownHostException e) {
