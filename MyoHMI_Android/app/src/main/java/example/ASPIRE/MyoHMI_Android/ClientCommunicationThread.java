@@ -33,7 +33,7 @@ public class ClientCommunicationThread extends Thread {
     static long regTime = 0;
 
     public ClientCommunicationThread() {
-        this.mServer = alexHomeip;
+        this.mServer = "10.143.128.68";
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ClientCommunicationThread extends Thread {
 
                 while (mRun) {
                     if ((length = input.read(buffer)) != -1)
-//                        Log.d("Cloud Prediction: ", String.valueOf(buffer[0]) + "  :  " + String.valueOf(System.currentTimeMillis()));
+                        Log.d("Cloud Prediction: ", String.valueOf(buffer[0]) + "  :  " + String.valueOf(System.currentTimeMillis()));
 //                        calculateDiff((int)buffer[0], 0);
                         FeatureCalculator.getThing(System.nanoTime());
                 }

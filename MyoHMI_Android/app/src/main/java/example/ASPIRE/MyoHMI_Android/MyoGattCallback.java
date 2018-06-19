@@ -90,13 +90,13 @@ public class MyoGattCallback extends BluetoothGattCallback {
         progress = prog;
         fcalc = new FeatureCalculator(plotter);
 
-//        thread = new ServerCommunicationThread();
-//        thread.start();
-//
-//        clientThread = new ClientCommunicationThread();
-//        clientThread.start();
+        thread = new ServerCommunicationThread();
+        thread.start();
 
-//        fcalc.connect();
+        clientThread = new ClientCommunicationThread();
+        clientThread.start();
+
+        fcalc.connect();
     }
 
     @Override
