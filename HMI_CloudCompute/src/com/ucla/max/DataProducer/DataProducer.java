@@ -82,9 +82,11 @@ public class DataProducer {
 
                     if ((length = myis.read(buffer)) != -1) {
 
-                        System.out.println("Packet Length: " + length );
+                        //System.out.println("Packet Length: " + length );
+			System.out.println("EMG1: " + Arrays.toString(buffer));
+	                 //System.out.println(length);
 
-                        if(length==73){ // PACKET LOSS????
+			    if(length==73){ //length == 73?
 
                             byte[] time = Arrays.copyOfRange(buffer, 65, 73);
                             long clienttime = bytesToLong(time);
@@ -92,7 +94,7 @@ public class DataProducer {
                             if(!trained){//blocks broken packets
                                 switch(buffer[0]){
                                     case 0:
-                                        System.out.println("EMG1: " + Arrays.toString(buffer));
+                                        //System.out.println("EMG1: " + Arrays.toString(buffer));
                                         //route data nowhere
                                         break;
                                     case 1:
@@ -142,7 +144,7 @@ public class DataProducer {
                             time2 = time1;// ?
                             time1 = System.nanoTime();
                             long latency = (time1 - time2) - clienttime;
-                            System.out.println("Time1 - Time2: " + (time1-time2) + " Client Time: " + clienttime + " Round Trip Latency: " + latency);
+                            //System.out.println("Time1 - Time2: " + (time1-time2) + " Client Time: " + clienttime + " Round Trip Latency: " + latency);
                         }
                     }
                 }
