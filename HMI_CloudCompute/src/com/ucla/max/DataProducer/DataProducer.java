@@ -66,7 +66,7 @@ public class DataProducer {
                 
                 myos = androidSocket.getOutputStream();
 
-                byte[] buffer = new byte[1033];
+                byte[] buffer = new byte[73];
 
                 int length;
 
@@ -74,7 +74,7 @@ public class DataProducer {
 
                 int samples = 100;
                 
-                packetLength = 1033;
+                packetLength = 73;
 
                 boolean trained = false;
 
@@ -82,7 +82,7 @@ public class DataProducer {
 
                     if ((length = myis.read(buffer)) != -1) {
 
-                        // System.out.println("Packet Length: " + length );
+                        System.out.println("Packet Length: " + length );
 
                         if(length==73){ // PACKET LOSS????
 
@@ -92,7 +92,7 @@ public class DataProducer {
                             if(!trained){//blocks broken packets
                                 switch(buffer[0]){
                                     case 0:
-                                        // System.out.println("EMG1: " + Arrays.toString(buffer));
+                                        System.out.println("EMG1: " + Arrays.toString(buffer));
                                         //route data nowhere
                                         break;
                                     case 1:
@@ -109,7 +109,7 @@ public class DataProducer {
                                         fcalc.setTrain(true);
                                         break;
                                     case 3:
-                                        //System.out.println(buffer);
+                                        System.out.println(buffer);
                                     default:
                                         //broken packet
                                         break;

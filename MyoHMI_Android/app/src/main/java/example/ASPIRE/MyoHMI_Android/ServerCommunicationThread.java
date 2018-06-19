@@ -24,7 +24,7 @@ public class ServerCommunicationThread extends Thread {
     private final String sfStateip = "10.143.132.221";
 
     public ServerCommunicationThread() {
-        this.mServer = alexHomeip;
+        this.mServer = "10.143.128.68";
     }
 
     @Override
@@ -50,8 +50,9 @@ public class ServerCommunicationThread extends Thread {
                         message = mMessages.get(0);
                         mMessages.remove(0);
                     }
-                    System.out.println(Arrays.toString(message));
+//                    System.out.println(Arrays.toString(message));
                     output.write(message);
+                    send(message);
                 }
 
             } catch (UnknownHostException e) {
