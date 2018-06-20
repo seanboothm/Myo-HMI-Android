@@ -16,6 +16,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,20 +90,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mViewPager = (ViewPager) this.findViewById(R.id.view_pager);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(3);
 //
         EmgFragment emgFragment = new EmgFragment();
         FeatureFragment featureFragment = new FeatureFragment();
         classificationFragment = new ClassificationFragment();
+        ImuFragment imuFragment = new ImuFragment();
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         TabLayout.Tab EMGTab = tabLayout.newTab();
         TabLayout.Tab FeatureTab = tabLayout.newTab();
         TabLayout.Tab ClassificationTab = tabLayout.newTab();
+        TabLayout.Tab IMUTab = tabLayout.newTab();
 
         tabLayout.addTab(EMGTab, 0, true);
         tabLayout.addTab(FeatureTab, 1, true);
         tabLayout.addTab(ClassificationTab, 2, true);
+        tabLayout.addTab(IMUTab, 3, true);
 
         tabLayout.setupWithViewPager(mViewPager);
 
@@ -218,13 +222,40 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menu.add(0, MENU_LIST, 0, "Connect to Myo");
-        menu.add(0, MENU_BYE, 0, "Disconnect");
+       getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.connect:
+            case MENU_LIST:
+                Intent intent = new Intent(this, ListActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.disconnect:
+                closeBLEGatt();
+                Toast.makeText(getApplicationContext(), "Close GATT", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return false;
+    }
+
+/*
+
+  @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menu.add(0, MENU_LIST, 0, "Connect to Myo");
+        menu.add(1, MENU_BYE, 1, "Disconnect");
+        return true;
+    }
+
+
+  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
@@ -242,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return false;
-    }
+    }*/
 
     /*
     int nSamples = 100;
