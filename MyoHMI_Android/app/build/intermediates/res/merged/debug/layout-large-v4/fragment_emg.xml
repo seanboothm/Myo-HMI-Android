@@ -16,40 +16,51 @@
         android:layout_width="match_parent"
         app:layout_heightPercent="89%">
 
-    <TextView
-        android:id="@+id/gestureTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Myo Not Connected"
-        android:textSize="25dp"
-        android:layout_centerInParent="true"
-        />
+        <TextView
+            android:id="@+id/gestureTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Myo Not Connected"
+            android:textSize="25dp"
+            android:layout_centerInParent="true"
+            />
 
-    <ProgressBar
-        android:id="@+id/conncectionProgress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        />
+        <ProgressBar
+            android:id="@+id/conncectionProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            />
 
-    <com.echo.holographlibrary.LineGraph
-        android:id="@+id/holo_graph_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
-        />
+        <TextView
+            android:id="@+id/connectingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/conncectionProgress"
+            android:text="Connecting..."
+            android:textSize="25dp"
+            android:visibility="invisible"
+            />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@mipmap/myocolors"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
-        />
+        <com.echo.holographlibrary.LineGraph
+            android:id="@+id/holo_graph_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@mipmap/myocolors"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            />
     </RelativeLayout>
 
     <RelativeLayout

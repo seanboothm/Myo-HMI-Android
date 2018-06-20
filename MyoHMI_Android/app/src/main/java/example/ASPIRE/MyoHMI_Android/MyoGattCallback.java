@@ -70,6 +70,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
     private String TAG = "MyoGatt";
 
     private TextView textView;
+    private TextView connectingTextView;
     private String callback_msg;
     private Handler mHandler;
 
@@ -83,20 +84,21 @@ public class MyoGattCallback extends BluetoothGattCallback {
 
     ClientCommunicationThread clientThread;
 
-    public MyoGattCallback(Handler handler, TextView view, ProgressBar prog, Plotter plot, View v) {
+    public MyoGattCallback(Handler handler, TextView view, ProgressBar prog, TextView connectingText, Plotter plot, View v) {
         mHandler = handler;
+        connectingTextView = connectingText;
         textView = view;
         plotter = plot;
         progress = prog;
         fcalc = new FeatureCalculator(plotter);
 
-        thread = new ServerCommunicationThread();
-        thread.start();
+//        thread = new ServerCommunicationThread();
+//        thread.start();
+//
+//        clientThread = new ClientCommunicationThread();
+//        clientThread.start();
 
-        clientThread = new ClientCommunicationThread();
-        clientThread.start();
-
-        fcalc.connect();
+//        fcalc.connect();
     }
 
     @Override
@@ -237,9 +239,10 @@ public class MyoGattCallback extends BluetoothGattCallback {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    textView.setText("Myo Connected");
+                    textView.setText("" + ListActivity.myoName + " Connected");
                     myoConnected = true;
                     progress.setVisibility(View.INVISIBLE);
+                    connectingTextView.setVisibility(View.INVISIBLE);
                 }
             });
 //            EmgFragment emgFrag = new EmgFragment();

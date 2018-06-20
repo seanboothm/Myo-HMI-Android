@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
@@ -261,9 +262,17 @@ public class ClassificationFragment extends Fragment {
 
             }
 
-            ListElementsArrayList.add(GetValue.getText().toString());
-            GetValue.setText("");
-            adapter.notifyDataSetChanged();
+            String newGesture = GetValue.getText().toString();
+
+            if (newGesture.matches("")){
+                Toast.makeText(getActivity(), "Please Enter A Gesture", Toast.LENGTH_SHORT).show();
+
+
+            }else {
+                ListElementsArrayList.add(GetValue.getText().toString());
+                GetValue.setText("");
+                adapter.notifyDataSetChanged();
+            }
         });
 
 //        uploadButton.setOnClickListener(new View.OnClickListener() {
@@ -277,62 +286,7 @@ public class ClassificationFragment extends Fragment {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Button cancel;
-                Button sdCard;
-                Button cloud;
-                Button both;
-                AlertDialog.Builder upload_pop = new AlertDialog.Builder(getActivity());
-
-                View view = inflater.inflate(R.layout.upload_dialog, container, false);
-
-                cancel = (Button) view.findViewById(R.id.bt_cancel);
-                sdCard = (Button) view.findViewById(R.id.bt_sdcard);
-                cloud = (Button) view.findViewById(R.id.bt_cloud);
-                both = (Button) view.findViewById(R.id.bt_both);
-
-                File file = saver.addData(fcalc.getFeatureData());
-
-                final AlertDialog dialog = upload_pop.create();
-
-                cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        file.delete();
-                        Toast.makeText(getActivity(), "Canceled", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
-
-                sdCard.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-//                        saver.addData(fcalc.getSamplesClassifier(), selectedItems);
-                        Toast.makeText(getActivity(), "Saving on SDCARD!", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
-
-                cloud.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        cloudUpload.beginUpload(file);
-                        cloudUpload.setDelete(true);
-                        Toast.makeText(getActivity(), "Saving on Cloud!", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
-
-                both.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        cloudUpload.setDelete(false);
-                        cloudUpload.beginUpload(file);
-                        Toast.makeText(getActivity(), "Saving on SDCARD and Cloud!", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setView(view);
-                dialog.show();
+                fileUpload();
             }
         });
 
@@ -360,23 +314,8 @@ public class ClassificationFragment extends Fragment {
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                if (MyoGattCallback.myoConnected = true){
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                    alertDialog.setTitle("Myo not detected");
-                    alertDialog.setMessage("Myo armband should be connected before transferring data.");
-                    alertDialog.setIcon(R.drawable.stop_icon);
-
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                }else {
-                    openFolder();
-                }
+                fileLoad();
+            }
 
 
 //
@@ -387,8 +326,9 @@ public class ClassificationFragment extends Fragment {
 //                float batteryPct = level / (float)scale;
 //                Log.d("Battery$$$ ", String.valueOf(batteryPct));
 //                Toast.makeText(getActivity(), "Battery Level "+String.valueOf(batteryPct), Toast.LENGTH_SHORT).show();
-            }
+
         });
+
         return v;
     }
 
@@ -444,15 +384,83 @@ public class ClassificationFragment extends Fragment {
         };r1.run();
     }
 
+    private void fileLoad(){
+        if (MyoGattCallback.myoConnected == null){
+            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            alertDialog.setTitle("Myo not detected");
+            alertDialog.setMessage("Myo armband should be connected before importing data.");
+            alertDialog.setIcon(R.drawable.stop_icon);
+
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getContext(), "On the top right corner, press 'Connect to  Myo'", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            alertDialog.show();
+
+        }else {
+            AlertDialog.Builder loadDialog = new AlertDialog.Builder(getContext());
+            loadDialog.setTitle("Load From:");
+            loadDialog.setMessage("Where would you like to load the Trained Gestures from?");
+            loadDialog.setIcon(R.drawable.add_icon_extra);
+            loadDialog.setCancelable(true);
+
+
+            loadDialog.setPositiveButton(
+                    "SD CARD",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            openFolder();
+                        }
+                    });
+
+
+            loadDialog.setNegativeButton(
+                    "Cloud",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+
+            loadDialog.setNeutralButton(
+                    "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog loadOptions = loadDialog.create();
+            loadOptions.show();
+
+            // Get the alert dialog buttons reference
+            Button positiveButton = loadOptions.getButton(AlertDialog.BUTTON_POSITIVE);
+            Button negativeButton = loadOptions.getButton(AlertDialog.BUTTON_NEGATIVE);
+            Button neutralButton = loadOptions.getButton(AlertDialog.BUTTON_NEUTRAL);
+
+            // Change the alert dialog buttons text and background color
+            positiveButton.setTextColor(Color.parseColor("#FFFFFF"));
+            positiveButton.setBackgroundColor(Color.parseColor("#000000"));
+
+            negativeButton.setTextColor(Color.parseColor("#FFFFFF"));
+            negativeButton.setBackgroundColor(Color.parseColor("#030000"));
+
+            neutralButton.setTextColor(Color.parseColor("#FFFFFF"));
+            neutralButton.setBackgroundColor(Color.parseColor("#FF0000"));
+        }
+
+    }
+
     private void fileUpload(){
-        AlertDialog.Builder upload_pop = new AlertDialog.Builder(getActivity());
-
-        View view = inflater.inflate(R.layout.upload_dialog, container, false);
-
         Button cancel;
         Button sdCard;
         Button cloud;
         Button both;
+        AlertDialog.Builder upload_pop = new AlertDialog.Builder(getActivity());
+
+        View view = inflater.inflate(R.layout.upload_dialog, container, false);
 
         cancel = (Button) view.findViewById(R.id.bt_cancel);
         sdCard = (Button) view.findViewById(R.id.bt_sdcard);
@@ -475,7 +483,7 @@ public class ClassificationFragment extends Fragment {
         sdCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                        saver.addData(fcalc.getSamplesClassifier(), selectedItems);
+                //saver.addData(fcalc.getSamplesClassifier(), selectedItems);
                 Toast.makeText(getActivity(), "Saving on SDCARD!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }

@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -57,7 +58,7 @@ public class ListActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
 
     private ArrayList<String> deviceNames = new ArrayList<>();
-    private String myoName = null;
+    public static String myoName = null;
 
     private ArrayAdapter<String> adapter;
 
@@ -67,8 +68,11 @@ public class ListActivity extends AppCompatActivity {
     private ScanSettings settings;
     private List<ScanFilter> filters;
 
+    private TextView scanningText;
     private ProgressBar prog;
-    private Button scan;
+    private Button scanButton;
+
+    /*Updated by Ricardo Colin 06/15/18*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,20 +81,23 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         prog = (ProgressBar) findViewById(R.id.progressBar2);
-        scan = (Button) findViewById(R.id.scanButton);
+        scanButton = (Button) findViewById(R.id.scanButton);
+        scanningText = (TextView) findViewById(R.id.scanning_text);
 
         mHandler = new Handler();
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
-            Toast.makeText(this, "BLE Not Supported", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bluetooth Not Supported", Toast.LENGTH_SHORT).show();
             finish();
         }
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
 
-        ListView lv = (ListView) findViewById(R.id.listView1);
+        ListView devicesList = (ListView) findViewById(R.id.devicesList);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, deviceNames);
 
-        lv.setAdapter(adapter);
+        devicesList.setAdapter(adapter);
+
+
 
         if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -103,12 +110,12 @@ public class ListActivity extends AppCompatActivity {
             }
         }
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        devicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListView listView = (ListView) parent;
                 String item = (String) listView.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), item + " connect", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), item + " is connecting...", Toast.LENGTH_SHORT).show();
 //                mLEScanner.stopScan(mScanCallback);//added this for the tablet that sucks
                 myoName = item;
 
@@ -120,6 +127,16 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //scans for devices when initiated
+        scanDevice();
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scanDevice();
+            }
+        });
+
+
 
     }
 
@@ -148,12 +165,7 @@ public class ListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickScan(View v) {
-        scanDevice();
-        prog.setVisibility(View.VISIBLE);
-        scan.setVisibility(View.INVISIBLE);
-        //////////////////////////////////////////////hey
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -164,6 +176,10 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void scanDevice() {
+        scanButton.setVisibility(View.INVISIBLE);
+        scanningText.setVisibility(View.VISIBLE);
+        prog.setVisibility(View.VISIBLE);
+
         if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
@@ -178,7 +194,9 @@ public class ListActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getApplicationContext(), "Scan Stopped", Toast.LENGTH_SHORT).show();
                     prog.setVisibility(View.INVISIBLE);
-                    scan.setVisibility(View.VISIBLE);
+                    scanningText.setVisibility(View.INVISIBLE);
+                    scanButton.setVisibility(View.VISIBLE);
+
                 }
             }, SCAN_PERIOD);
             mLEScanner.startScan(filters, settings, mScanCallback);
@@ -268,7 +286,7 @@ public class ListActivity extends AppCompatActivity {
 
             }
         } else {
-            Toast.makeText(this, "Location Permission (already) Granted!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Location Permission (already) Granted!", Toast.LENGTH_SHORT).show();
         }
     }
 
