@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:animateLayoutChanges="true"
     android:orientation="vertical">
-    <!--Updated by Ricardo Colin 07/28/17-->
+    <!--Updated by Ricardo Colin 06/15/18-->
 
     <TextView
         android:id="@+id/devices"
@@ -27,7 +27,7 @@
 
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/devicesList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/borderLine"
@@ -39,8 +39,9 @@
         android:layout_width="400dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
+        android:textSize="20dp"
         android:onClick="onClickScan"
-        android:text="SCAN" />
+        android:text="SCAN AGAIN" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -50,4 +51,15 @@
         android:layout_centerInParent="true"
         android:visibility="invisible"
         />
+
+    <TextView
+        android:id="@+id/scanning_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressBar2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Scanning For Devices"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 </RelativeLayout>

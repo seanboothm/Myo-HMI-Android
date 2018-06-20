@@ -1,4 +1,4 @@
-#Tue Jun 19 15:43:23 PDT 2018
-base.0=C\:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+#Tue Jun 19 20:51:40 PDT 2018
+base.0=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.0=C\:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+file.0=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

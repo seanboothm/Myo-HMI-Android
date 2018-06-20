@@ -33,6 +33,7 @@ import com.github.mikephil.charting.charts.RadarChart;
 
 import static android.R.attr.bitmap;
 import static android.content.Context.BLUETOOTH_SERVICE;
+//import static example.ASPIRE.MyoHMI_Android.R.id.ConnectingText;
 import static example.ASPIRE.MyoHMI_Android.R.id.conncectionProgress;
 import static example.ASPIRE.MyoHMI_Android.R.id.imageView;
 
@@ -50,6 +51,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
     private BluetoothGatt mBluetoothGatt;
     //    private TextView emgDataText;
     private TextView gestureText;
+    private TextView connectingText;
     private BluetoothLeScanner mLEScanner;
 
     private MyoGattCallback mMyoCallback;
@@ -82,6 +84,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
         activity = this.getActivity();
 
         prog = (ProgressBar) v.findViewById(conncectionProgress);
+        connectingText = (TextView) v.findViewById(R.id.connectingTextView);
 
         ImageView imgView = (ImageView) v.findViewById(R.id.imageView);
         imgView.setDrawingCacheEnabled(true);
@@ -89,7 +92,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
 
         BluetoothManager mBluetoothManager = (BluetoothManager) getActivity().getSystemService(BLUETOOTH_SERVICE);
         mBluetoothAdapter = mBluetoothManager.getAdapter();
-       mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+        mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
 
 
         Intent intent = getActivity().getIntent();
@@ -115,6 +118,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                 }, SCAN_PERIOD);
                 */
                 prog.setVisibility(View.VISIBLE);
+                connectingText.setVisibility(View.VISIBLE);
                 gestureText.setText("");
 
                 mLEScanner.startScan(mScanCallback);
@@ -161,7 +165,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
         } else {
             if (mBluetoothGatt == null
                     || !mMyoCallback.setMyoControlCommand(commandList.sendUnsetData())
-                    /*|| !mMyoCallback.setMyoControlCommand(commandList.sendNormalSleep())*/) {
+                /*|| !mMyoCallback.setMyoControlCommand(commandList.sendNormalSleep())*/) {
                 Log.d(TAG, "False Data Stop");
             }
         }
@@ -182,7 +186,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                 // Trying to connect GATT
 
                 plotter = new Plotter(mHandler, graph);
-                mMyoCallback = new MyoGattCallback(mHandler, gestureText, prog, plotter, getView());
+                mMyoCallback = new MyoGattCallback(mHandler, gestureText, prog, connectingText, plotter, getView());
                 mBluetoothGatt = device.connectGatt(getActivity(), false, mMyoCallback);
                 mMyoCallback.setBluetoothGatt(mBluetoothGatt);
             }
