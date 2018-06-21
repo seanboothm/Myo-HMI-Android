@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
-        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/drawable/abc_ic_menu_overflow_material.xml"
-    },
-    {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/drawable/trash_icon.xml",
         "source": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/res/drawable/trash_icon.xml"
+    },
+    {
+        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
+        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/drawable/abc_ic_menu_overflow_material.xml"
     },
     {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",

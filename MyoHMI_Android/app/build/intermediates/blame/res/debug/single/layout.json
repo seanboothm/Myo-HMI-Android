@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
-        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/notification_template_part_time.xml"
-    },
-    {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
         "source": "/Users/ricardocolin/.android/build-cache/7800b2f656c9023d11a0417edaacd7b9f51d1688/output/res/layout/design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/notification_template_part_time.xml"
     },
     {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
@@ -72,20 +72,20 @@
         "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/abc_dialog_title_material.xml"
-    },
-    {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
         "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/abc_activity_chooser_view_list_item.xml"
+        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/abc_dialog_title_material.xml"
     },
     {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
         "source": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/ricardocolin/.android/build-cache/c6a7db99f0757bcc9bb86289aa75671ba830b034/output/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
