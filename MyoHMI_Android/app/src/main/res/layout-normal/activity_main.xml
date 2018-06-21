@@ -13,7 +13,6 @@
         android:background="#000000"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="#ffffff"
-        android:textSize="10sp"
         app:tabMode="fixed"
         app:tabGravity="fill"/>
 

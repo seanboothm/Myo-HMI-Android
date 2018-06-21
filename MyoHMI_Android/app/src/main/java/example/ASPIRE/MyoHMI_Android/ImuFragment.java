@@ -23,32 +23,20 @@ import java.util.List;
 
 public class ImuFragment extends Fragment {
     private static final String TAG = "Tab4Fragment";
-    private RadarChart mChart;
-    private Plotter plotter;
-    ListView listview_Classifier;
-    ListView listView_Features;
+
     ListView listView_IMU;
 
     Classifier classifier = new Classifier();
 
     //create an ArrayList object to store selected items
-    ArrayList<String> selectedItems = new ArrayList<String>();
 
     ArrayList<String> selectedItemsIMU = new ArrayList<String>();
 
     private int numIMU = 0;
-    private int numFeats = 6;
 
     private FeatureCalculator fcalc = new FeatureCalculator();
 
-    String[] featureNames = new String[]{
-            "MAV",
-            "WAV",
-            "Turns",
-            "Zeros",
-            "SMAV",
-            "AdjUnique"
-    };
+
 
     String[] IMUs = new String[]{
             "Orientation W",
@@ -112,8 +100,6 @@ public class ImuFragment extends Fragment {
 
         });
 
-        mChart = (RadarChart) v.findViewById(R.id.chart);
-        plotter = new Plotter(mChart);//must pass chart from this fragment
 
         return v;
     }

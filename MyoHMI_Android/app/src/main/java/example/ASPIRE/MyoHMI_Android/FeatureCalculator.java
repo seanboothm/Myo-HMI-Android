@@ -181,20 +181,20 @@ public class FeatureCalculator {
 
             /*********************************************** Beginning of cloud stuff ***********************************************/
 
-            startCalc = System.nanoTime();
-            byte cloudControl = 0;
-            if (getClassify()) {
-                cloudControl = 1;
-            } else if (getTrain()) {
-                cloudControl = 2;
-            }
-            long clientTime = (System.nanoTime() - time1);
-            sendWindow = ArrayUtils.addAll(sendWindow, longToBytes(clientTime));
-            Log.d("window length: ", String.valueOf(sendWindow.length));
-            thread.send(sendWindow); //TCP Connection
-            //new Lambda.LTask().execute(sendWindow); //Calls Lambda
-            sendWindow = new byte[1];
-            sendWindow[0] = cloudControl;
+//            startCalc = System.nanoTime();
+//            byte cloudControl = 0;
+//            if (getClassify()) {
+//                cloudControl = 1;
+//            } else if (getTrain()) {
+//                cloudControl = 2;
+//            }
+//            long clientTime = (System.nanoTime() - time1);
+//            sendWindow = ArrayUtils.addAll(sendWindow, longToBytes(clientTime));
+//            Log.d("window length: ", String.valueOf(sendWindow.length));
+//            thread.send(sendWindow); //TCP Connection
+//            //new Lambda.LTask().execute(sendWindow); //Calls Lambda
+//            sendWindow = new byte[1];
+//            sendWindow[0] = cloudControl;
 
             /********************************************** End of cloud stuff ***********************************************/
 

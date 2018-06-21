@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/HoloGraphLibrary/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="78820525b7029b6c9234498f2fe1539f3f229eab">
+        <dex dex="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/pre-dexed/debug/classes_94ae2874cb323ce1d244db0db55a1d989173e0df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/libs/commons-lang3-3.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9d28a6b23650e8a7e9063c04588ace6cf7012c17">
+        <dex dex="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/pre-dexed/debug/commons-lang3-3.6_a1147228c24dae1032cf9682f0e48cb6e6373a5c.jar" />
+    </item>
+
+</items>

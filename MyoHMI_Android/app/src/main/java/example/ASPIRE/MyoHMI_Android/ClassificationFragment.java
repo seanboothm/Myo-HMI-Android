@@ -233,22 +233,50 @@ public class ClassificationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String selItems = "";
-                while (selectedItems.size() > 0) {
-                    for (int i = 0; i < selectedItems.size(); ++i) {
-                        String item = selectedItems.get(i);
+                if (selectedItems.size() > 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                        for (int x = 0; x <= item.length(); ++x) {
-                            selectedItems.remove(item); //remove deselected item from the list of selected items
-                            listview.setItemChecked(x, false);
-                            adapter.remove(item);
+                    builder.setTitle("Delete?");
+                    builder.setMessage("Are you sure you want to delete " + selectedItems + "?");
+
+                    builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
                         }
-                        selItems += "/" + item;
-                    }
+                    });
+                    builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            String selItems = "";
+                            while (selectedItems.size() > 0) {
+                                for (int i = 0; i < selectedItems.size(); ++i) {
+                                    String item = selectedItems.get(i);
+
+                                    for (int x = 0; x <= item.length(); ++x) {
+                                        selectedItems.remove(item); //remove deselected item from the list of selected items
+                                        listview.setItemChecked(x, false);
+                                        adapter.remove(item);
+                                    }
+                                    selItems += "," + item;
+                                }
+
+                            }
+                            Toast.makeText(getActivity(), "Deleting: " + selItems, Toast.LENGTH_SHORT).show();
+                            adapter.notifyDataSetChanged();
+
+
+                        }
+                    });
+                    builder.show();
+
+                }else if (ListElementsArrayList.size() > 0) {
+                    Toast.makeText(getActivity(), "Please select the desired gestures to be deleted!", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(getActivity(), "There is nothing to delete!", Toast.LENGTH_SHORT).show();
 
                 }
-                Toast.makeText(getActivity(), "Deleting: " + selItems, Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
+
+
 
             }
         });
@@ -305,9 +333,28 @@ public class ClassificationFragment extends Fragment {
         trainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onClickTrain(v);
-                countdown(true);
+
+                if (MyoGattCallback.myoConnected == null){
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("Myo not detected");
+                    alertDialog.setMessage("Myo armband should be connected before training gestures.");
+                    alertDialog.setIcon(R.drawable.stop_icon);
+
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getContext(), "On the top right corner, select 'Connect'", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                    alertDialog.show();
+
+                }else {
+
+
+                    //onClickTrain(v);
+                    countdown(true);
 //                mHandler.post(r1);
+                }
             }
         });
 
@@ -393,7 +440,7 @@ public class ClassificationFragment extends Fragment {
 
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getContext(), "On the top right corner, press 'Connect to  Myo'", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "On the top right corner, select 'Connect'", Toast.LENGTH_LONG).show();
                 }
             });
 
