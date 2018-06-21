@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:animateLayoutChanges="true"
     android:orientation="vertical">
-    <!--Updated by Ricardo Colin 06/15/18-->
+    <!--Updated by Ricardo Colin 06/21/18-->
 
     <TextView
         android:id="@+id/devices"
