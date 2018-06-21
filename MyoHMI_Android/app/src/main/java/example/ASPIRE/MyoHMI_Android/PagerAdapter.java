@@ -5,9 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs = 3;
+    int mNumOfTabs = 4;
 
-    private String[] tabTitles = new String[]{"EMG", "FEATURES", "CLASSIFIER"};
+    private String[] tabTitles = new String[]{"EMG", "FEATURES", "CLASSIFIER", "IMU"};
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -27,6 +27,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 ClassificationFragment tab3 = new ClassificationFragment();
                 return tab3;
+            case 3:
+                ImuFragment tab4 = new ImuFragment();
+                return tab4;
             default:
                 return null;
         }
