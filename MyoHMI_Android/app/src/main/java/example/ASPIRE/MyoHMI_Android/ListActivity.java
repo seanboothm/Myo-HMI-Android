@@ -92,7 +92,7 @@ public class ListActivity extends AppCompatActivity {
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
 
-        ListView devicesList = (ListView) findViewById(R.id.devicesList);
+        ListView devicesList = (ListView) findViewById(R.id.listView1);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, deviceNames);
 
         devicesList.setAdapter(adapter);
