@@ -79,7 +79,7 @@ public class ClassificationFragment extends Fragment {
     private List<String> ClassifierArrayList;
     private List<String> Copy_of_selectedItemsList;
     private SaveData saver;
-    private ArrayList<DataVector> trainData;
+    private ArrayList<DataVector> trainData = new ArrayList<>();
     private int count = 4;
     private Handler mHandler = new Handler();
     private int gestureCounter = 0;
@@ -108,7 +108,7 @@ public class ClassificationFragment extends Fragment {
     ViewGroup container;
 
     //create an ArrayList object to store selected items
-    ArrayList<String> selectedItems = new ArrayList<String>();
+    public ArrayList<String> selectedItems = new ArrayList<>();
 
     Classifier classifier = new Classifier();
 
@@ -213,7 +213,6 @@ public class ClassificationFragment extends Fragment {
             }
 
             Copy_of_selectedItemsList = new ArrayList<String>(Arrays.asList(selectedItem));
-
         });
 
 
@@ -268,16 +267,12 @@ public class ClassificationFragment extends Fragment {
                     });
                     builder.show();
 
-                }else if (ListElementsArrayList.size() > 0) {
+                } else if (ListElementsArrayList.size() > 0) {
                     Toast.makeText(getActivity(), "Please select the desired gestures to be deleted!", Toast.LENGTH_SHORT).show();
 
-                }else{
+                } else {
                     Toast.makeText(getActivity(), "There is nothing to delete!", Toast.LENGTH_SHORT).show();
-
                 }
-
-
-
             }
         });
 
@@ -292,11 +287,11 @@ public class ClassificationFragment extends Fragment {
 
             String newGesture = GetValue.getText().toString();
 
-            if (newGesture.matches("")){
+            if (newGesture.matches("")) {
                 Toast.makeText(getActivity(), "Please Enter A Gesture", Toast.LENGTH_SHORT).show();
 
 
-            }else {
+            } else {
                 ListElementsArrayList.add(GetValue.getText().toString());
                 GetValue.setText("");
                 adapter.notifyDataSetChanged();
@@ -313,7 +308,7 @@ public class ClassificationFragment extends Fragment {
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 fileUpload();
             }
         });
@@ -334,7 +329,7 @@ public class ClassificationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (MyoGattCallback.myoConnected == null){
+                if (MyoGattCallback.myoConnected == null) {
                     AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                     alertDialog.setTitle("Myo not detected");
                     alertDialog.setMessage("Myo armband should be connected before training gestures.");
@@ -348,8 +343,7 @@ public class ClassificationFragment extends Fragment {
 
                     alertDialog.show();
 
-                }else {
-
+                } else {
 
                     //onClickTrain(v);
                     countdown(true);
@@ -364,8 +358,6 @@ public class ClassificationFragment extends Fragment {
                 fileLoad();
             }
 
-
-//
 //                IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 //                Intent batteryStatus = getContext().registerReceiver(null, ifilter);
 //                int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
@@ -379,7 +371,7 @@ public class ClassificationFragment extends Fragment {
         return v;
     }
 
-    private void countdown(boolean train){
+    private void countdown(boolean train) {
 
         fcalc.sendClasses(selectedItems);
         count = 4;
@@ -415,7 +407,7 @@ public class ClassificationFragment extends Fragment {
                         liveView.setText("");
                         if (train) {
                             fcalc.Train();
-                        }else{
+                        } else {
                             fileUpload();
                         }
                         fcalc.setClassify(true);
@@ -428,11 +420,12 @@ public class ClassificationFragment extends Fragment {
 
                 }
             }
-        };r1.run();
+        };
+        r1.run();
     }
 
-    private void fileLoad(){
-        if (MyoGattCallback.myoConnected == null){
+    private void fileLoad() {
+        if (MyoGattCallback.myoConnected == null) {
             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
             alertDialog.setTitle("Myo not detected");
             alertDialog.setMessage("Myo armband should be connected before importing data.");
@@ -446,7 +439,7 @@ public class ClassificationFragment extends Fragment {
 
             alertDialog.show();
 
-        }else {
+        } else {
             AlertDialog.Builder loadDialog = new AlertDialog.Builder(getContext());
             loadDialog.setTitle("Load From:");
             loadDialog.setMessage("Where would you like to load the Trained Gestures from?");
@@ -461,7 +454,6 @@ public class ClassificationFragment extends Fragment {
                             openFolder();
                         }
                     });
-
 
             loadDialog.setNegativeButton(
                     "Cloud",
@@ -497,10 +489,9 @@ public class ClassificationFragment extends Fragment {
             neutralButton.setTextColor(Color.parseColor("#FFFFFF"));
             neutralButton.setBackgroundColor(Color.parseColor("#FF0000"));
         }
-
     }
 
-    private void fileUpload(){
+    private void fileUpload() {
         Button cancel;
         Button sdCard;
         Button cloud;
@@ -559,43 +550,46 @@ public class ClassificationFragment extends Fragment {
         dialog.show();
     }
 
-    public void openFolder(){
-
+    public void openFolder() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         getActivity().startActivityForResult(intent, 2);
-
     }
 
     public void givePath(Uri data) {
-        trainData = new ArrayList<DataVector>();
-//        Log.d("Load Path: ", getPath(this.getContext(), data));
+        ArrayList<String> TempGestures = new ArrayList<String>() {{ //temporary!!!
+            add("A");
+            add("B");
+            add("C");
+        }};
         try {
             BufferedReader reader = new BufferedReader(new FileReader(getPath(this.getContext(), data)));
             String text = null;
             String[] column;
             String[] emgData;
             double[] lineData = new double[48];
+            ArrayList<Integer> classes = new ArrayList<>();
 
             int i = 0;
             while ((text = reader.readLine()) != null) {
                 column = text.split("\t");
-//                Classes.add(Integer.parseInt(column[0]));
+                classes.add(Integer.parseInt(column[0]));
                 emgData = column[1].split(",");
-                for(int j=0;j<emgData.length;j++){
+                for (int j = 0; j < emgData.length; j++) {
                     lineData[j] = Double.parseDouble(emgData[j].replaceAll("[^\\d.]", ""));
-//                       System.out.println(String.valueOf(lineData[3]));
                 }
                 Number[] feat_dataObj = ArrayUtils.toObject(lineData);
                 ArrayList<Number> LineData = new ArrayList<Number>(Arrays.asList(feat_dataObj));
                 DataVector dvec = new DataVector(Integer.parseInt(column[0]), lineData.length, LineData);
-//                Log.d("Line: ", text);
                 trainData.add(dvec);
-//               System.out.print(String.valueOf(i) + " : ");
-                dvec.printDataVector("Line: ");
                 i++;
             }
-//            fcalc.Train(trainData,);
+            Log.d("clases len, samples len", String.valueOf(classes.size()) + ", " + String.valueOf(trainData.size()));
+            fcalc.setClasses(classes);
+            fcalc.setSamplesClassifier(trainData);
+            fcalc.sendClasses(TempGestures); //read this from file
+            fcalc.Train();
+            fcalc.setClassify(true);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -647,7 +641,7 @@ public class ClassificationFragment extends Fragment {
                 }
 
                 final String selection = "_id=?";
-                final String[] selectionArgs = new String[] {
+                final String[] selectionArgs = new String[]{
                         split[1]
                 };
 

@@ -2,22 +2,274 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/HoloGraphLibrary/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.github.haifengl\smile-math\1.0.4\f9de645a16d999ad4cfb9fa4b58e710c12f99ec\smile-math-1.0.4.jar"
+        jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="78820525b7029b6c9234498f2fe1539f3f229eab">
-        <dex dex="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/pre-dexed/debug/classes_94ae2874cb323ce1d244db0db55a1d989173e0df.jar" />
+        sha1="0f9de645a16d999ad4cfb9fa4b58e710c12f99ec">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\smile-math-1.0.4_2ad1d2af214c76564690769b68f0d338f1273371\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\fe42a1552566c700afcaf9435c82724516dedd1e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fa547a835b036330449f02d0119e474ce385feae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.github.haifengl\smile-data\1.0.4\99f4b6d991f4f058c7662737fab6dd4b625ecc6e\smile-data-1.0.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="99f4b6d991f4f058c7662737fab6dd4b625ecc6e">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\smile-data-1.0.4_cb6ef5face32c12e37c4847be4e8a5e6b20cbe83\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\a0bdab11ea038a3fc63d1ec9551bb8411a7bf5a0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_323fc1e6234082990731afacc18dde908f30392b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\8c873932d866c63d2b79a36d7a7f9020d2f662be\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3245cdaf75bed6c417b36937f7820b50ac77ef91\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\3c5ab526d5a25b611e03a842fc778f828b58ee85\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_985e1f7531e4d4863780ddfe447e497073ad0805\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\babebb3b728314b1b70e2e7dee3f122056f09437\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_03cb2205aaf0aa870ec2bec9c893a38617d4fc76\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\43c2bbb1209322588a8c696ff8fe44f6c4f85468\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_031906b4879a23f4900096b6793054ce08ab4d09\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\Documents\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_c1641ed440fe06778b3ce4b5d93a426fcde6d6f1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.github.haifengl\smile-graph\1.0.4\76d084940768aba255de6a66835a88a2f796aad4\smile-graph-1.0.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="76d084940768aba255de6a66835a88a2f796aad4">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\smile-graph-1.0.4_bba18f9358681d6f64082038417972f725e94d48\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-lambda\2.2.22\69c3a6197c0375570fddd12a8bedab138d5887d\aws-android-sdk-lambda-2.2.22.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="069c3a6197c0375570fddd12a8bedab138d5887d">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-lambda-2.2.22_0090ff3e0a3784a4aca4fa8bcefedbb590a51596\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3bf4bdcb034455b174ba97a1ae8cccc7507ede69">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6acf9ea67b932451fea1db500dc839116406724f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-core\2.4.4\be72e3b1184efe23e7db677c6a2c0eec39744162\aws-android-sdk-core-2.4.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="be72e3b1184efe23e7db677c6a2c0eec39744162">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-core-2.4.4_47a2aa920ed9f6e124fe32862c814eb6f5f921a6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\9b75be3447543e580164bf8ae08fa44387ab090f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9181192a88cf4b0241dbfc928d1994abd08a3ab3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-cognito\2.2.22\9bef9beddb1b7579713905702d8219d516bd3954\aws-android-sdk-cognito-2.2.22.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9bef9beddb1b7579713905702d8219d516bd3954">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-cognito-2.2.22_47cbd10a64a7f7676182fc8214d627187229af50\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-kms\2.4.4\51fcefeee5f853ea39ab807b4fb76c9681f0fb32\aws-android-sdk-kms-2.4.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="51fcefeee5f853ea39ab807b4fb76c9681f0fb32">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-kms-2.4.4_4173da14530dc700bf312aba2ec93a3be62d1d6e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\b782fde18689d9fd9963003680d800eee0639089\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9e40fc16be420dd270e1df5461d145678dd0bc73\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\159cae5ea98c25b4394dc9ddaaa646774430a385\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="928b73afabcd116944e9487771d4121168eac1a4">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ce803809e7fd79dbc76e7bf729656cf8bac861ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\libs\commons-lang3-3.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9d28a6b23650e8a7e9063c04588ace6cf7012c17">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-lang3-3.6_53af633c1a2ccdcc48c4ef4ac623c8113ba3a9c4\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/libs/commons-lang3-3.6.jar"
+        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\libs\commons-lang3-3.6.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.0"
         sha1="9d28a6b23650e8a7e9063c04588ace6cf7012c17">
-        <dex dex="/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/pre-dexed/debug/commons-lang3-3.6_a1147228c24dae1032cf9682f0e48cb6e6373a5c.jar" />
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\pre-dexed\debug\commons-lang3-3.6_53af633c1a2ccdcc48c4ef4ac623c8113ba3a9c4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\HoloGraphLibrary\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="81c7b9d6f74a69d67688299add0641e6ec51f888">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\pre-dexed\debug\classes_f7eae76da64d36689407dd77d30e25277a22ec34.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.2.4_313aff129984a0a45e086871ec03bfcc02e7284e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\e08014b739e585b5e74547e2267bf06693a56886\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8a14f6db9d0a0fe84beb7b26373ddb4f0d3174fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\0d9e924a5190bc497c2583a33ea95de137c4e18b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f31de6c42daebab8422080acb19edad36d5a95ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\9e98347a71e2db56f34c0acfb47461f69be5f88d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_631bf0dcddc3610fe7125c2059742e4e04f63ba6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.android\build-cache\e986d9c8d795235634b422fd43f3eacceeef7a4a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b9b3c68808a2783585c8f52522bcc3a56b4378da\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_9e1af4c2eac3faa99676da089a8abcf8e2d50b1b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.2_fa38749b9f5419b4be1051ff868f5da2940b191c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-s3\2.4.4\6e33749c1f26fa10a73335cbce8b14035c3dd60e\aws-android-sdk-s3-2.4.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6e33749c1f26fa10a73335cbce8b14035c3dd60e">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\aws-android-sdk-s3-2.4.4_19b03a4ecad2961e163ee1c5b165486430914c46\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Alex\.gradle\caches\modules-2\files-2.1\com.github.haifengl\smile-core\1.0.4\efb26fa85733e41adf97b7108aa6d76e961414b4\smile-core-1.0.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="efb26fa85733e41adf97b7108aa6d76e961414b4">
+        <dex dex="C:\Users\Alex\Dropbox\Desktop\Vagrant\MyoHMI_Android\MyoHMI_Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\smile-core-1.0.4_0df7c475221616790831d20ca40f195e1cf9d23b\classes.dex" />
     </item>
 
 </items>

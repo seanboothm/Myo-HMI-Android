@@ -1,4 +1,7 @@
-#Thu Jun 21 16:15:01 PDT 2018
-base.0=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Tue Jun 26 10:30:32 PDT 2018
+base.0=C\:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_6acf9ea67b932451fea1db500dc839116406724f
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.1=C\:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_9e1af4c2eac3faa99676da089a8abcf8e2d50b1b\\classes.dex
+base.1=C\:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_9e1af4c2eac3faa99676da089a8abcf8e2d50b1b
+file.0=C\:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_6acf9ea67b932451fea1db500dc839116406724f\\classes.dex
