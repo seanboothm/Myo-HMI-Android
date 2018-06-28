@@ -129,7 +129,7 @@ public class FeatureCalculator {
         return gestures.size();
     }
 
-    public void setTrain(boolean inTrain) {
+    public static void setTrain(boolean inTrain) {
         train = inTrain;
     }
 
@@ -222,7 +222,8 @@ public class FeatureCalculator {
 
             if (train) {
                 aux[0].setFlag(currentClass);//dont need this?
-                pushClassifyTrainer(aux);
+                if (aux != null)
+                    pushClassifyTrainer(aux);
                 if (samplesClassifier.size() % (nSamples) == 0 && samplesClassifier.size() != 0) { //triggers
                     setTrain(false);
                     currentClass++;
@@ -250,9 +251,9 @@ public class FeatureCalculator {
 
         startClass = System.nanoTime();
 
-        prediction = classifier.predict(inFeatemg);
+//        Log.d("Featureslength: ", String.valueOf(inFeatemg.getLength()));
 
-        System.out.println("," + (System.nanoTime() - startCalc)); //total calculation time, 3rd column
+        prediction = classifier.predict(inFeatemg);
 
         if (liveView != null) {
             classAct.runOnUiThread(new Runnable() {
@@ -470,16 +471,23 @@ public class FeatureCalculator {
         winincr = newWinincr;
     }
 
-    public void reset() {
+    public static void reset() {
         setClassify(false);
         setTrain(false);
         samplesClassifier = new ArrayList<>();
+        aux = null;
         classes = new ArrayList<>();
+        currentClass = 0;
+        classifier.reset();
         liveView.setText("");
-        thread.close();
-        clientThread.close();
-        thread.start();
-        clientThread.start();
+        trainButton.setVisibility(View.INVISIBLE);
+//        if(thread != null)
+//            thread.close();
+//            thread.start();
+//
+//        if(clientThread != null)
+//            clientThread.close();
+//            clientThread.start();
     }
 
     public void pushIMUFeatureBuffer(DataVector data) {
@@ -525,9 +533,13 @@ public class FeatureCalculator {
         nFeatures = feats;
     }
 
-    public static void setClasses(ArrayList<Integer> c) {classes = c;}
+    public static void setClasses(ArrayList<Integer> c) {
+        classes = c;
+    }
 
-    public static void setSamplesClassifier(ArrayList<DataVector> s) {samplesClassifier = s;}
+    public static void setSamplesClassifier(ArrayList<DataVector> s) {
+        samplesClassifier = s;
+    }
 
 }
 

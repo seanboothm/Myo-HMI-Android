@@ -610,6 +610,8 @@ public class ClassificationFragment extends Fragment {
                 final String[] split = docId.split(":");
                 final String type = split[0];
 
+                Log.d("HELLLOOOO!!", "");
+
                 if ("primary".equalsIgnoreCase(type)) {
                     return Environment.getExternalStorageDirectory() + "/" + split[1];
                 }
@@ -654,6 +656,7 @@ public class ClassificationFragment extends Fragment {
         }
         // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            Log.d("IHIHIHIHIHI", "");
             return uri.getPath();
         }
 
