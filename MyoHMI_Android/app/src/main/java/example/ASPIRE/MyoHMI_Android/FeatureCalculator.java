@@ -51,6 +51,7 @@ public class FeatureCalculator {
     public static ProgressBar progressBar;
     public static ImageButton uploadButton;
     public static ImageButton resetButton;
+    public static ImageButton trainButton;
     public static int prediction;
     int winsize = 40;    //window size
     int winincr = 8;    //separation length between windows
@@ -60,7 +61,7 @@ public class FeatureCalculator {
     static boolean[] imuSelected = {false, false, false, false, false, false, false, false, false, false};
     int numFeatSelected = 6;
     private static Classifier classifier = new Classifier();
-    private int currentClass = 0;
+    private static int currentClass = 0;
     public static ArrayList<Integer> classes = new ArrayList<>();
     public static twoDimArray featemg;
     public static twoDimArray featimu;
@@ -73,10 +74,10 @@ public class FeatureCalculator {
     private static View view;
     private static List<String> gestures;
     public static DataVector[] aux;//does it have to be public?
-    private  byte[] sendBytes = new byte[0];
+    private byte[] sendBytes = new byte[0];
     private static ServerCommunicationThread thread;
     private static ClientCommunicationThread clientThread;
-    private static SaveData saver;
+//    private static SaveData saver;
 
     private ArrayList<byte[]> samplebufferbytes = new ArrayList<>(bufsize);
 
@@ -94,7 +95,8 @@ public class FeatureCalculator {
 
     static File predFile;
 
-    public FeatureCalculator() {}
+    public FeatureCalculator() {
+    }
 
     public FeatureCalculator(View v, Activity act) {
         classAct = act;
@@ -102,10 +104,12 @@ public class FeatureCalculator {
         liveView = (TextView) view.findViewById(R.id.gesture_detected);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         uploadButton = (ImageButton) view.findViewById(R.id.im_upload);
-        resetButton =  (ImageButton) view.findViewById(R.id.im_reset);
-        saver = new SaveData(act);
+        resetButton = (ImageButton) view.findViewById(R.id.im_reset);
+        trainButton = (ImageButton) v.findViewById(R.id.bt_train);
 
-        predFile = saver.makeFile("predictions");
+//        saver = new SaveData(act);
+
+//        predFile = saver.makeFile("predictions");
 //        connect();
     }
 
@@ -117,15 +121,19 @@ public class FeatureCalculator {
         return samplesClassifier;
     }
 
-    public ArrayList<DataVector> getFeatureData(){return featureData;}
+    public ArrayList<DataVector> getFeatureData() {
+        return featureData;
+    }
 
-    public int getGesturesSize(){return gestures.size();}
+    public int getGesturesSize() {
+        return gestures.size();
+    }
 
-    public void setTrain(boolean inTrain) {
+    public static void setTrain(boolean inTrain) {
         train = inTrain;
     }
 
-    public void setClassify(boolean inClassify) {
+    public static void setClassify(boolean inClassify) {
         classify = inClassify;
     }
 
@@ -133,14 +141,16 @@ public class FeatureCalculator {
         return train;
     }
 
-    public static boolean getClassify(){return classify;}
+    public static boolean getClassify() {
+        return classify;
+    }
 
-    public static void getThing(long time){
+    public static void getThing(long time) {
         time1 = time;
 //        System.out.println("GOT NEW TIME: " + time);
     }
 
-    public void connect(){
+    public void connect() {
         thread = new ServerCommunicationThread();
         thread.start();
         clientThread = new ClientCommunicationThread();
@@ -152,7 +162,7 @@ public class FeatureCalculator {
     public static byte[] longToBytes(long l) {
         byte[] result = new byte[8];
         for (int i = 7; i >= 0; i--) {
-            result[i] = (byte)(l & 0xFF);
+            result[i] = (byte) (l & 0xFF);
             l >>= 8;
         }
         return result;
@@ -160,7 +170,7 @@ public class FeatureCalculator {
 
     public void pushFeatureBuffer(byte[] dataBytes) { //actively accepts single EMG arrays and runs calculations when window is reached
 
-       // System.out.println(samplesClassifier.size());
+        // System.out.println(samplesClassifier.size());
         sendWindow = ArrayUtils.addAll(sendWindow, dataBytes);
 
         Number[] dataObj = ArrayUtils.toObject(dataBytes);
@@ -205,24 +215,20 @@ public class FeatureCalculator {
             startFeature = System.nanoTime();
             featureVector = featCalc(samplebuffer);
 
-//            thread.send(windowFeat);
-
             imuFeatureVector = featCalcIMU(imusamplebuffer);
             aux = buildDataVector(featureVector, imuFeatureVector);
 
-            //System.out.print(","+(System.nanoTime() - startFeature));//feature extraction time, first column
-
             aux[0].setTimestamp(data.getTimestamp());
 
-            if(train){
+            if (train) {
                 aux[0].setFlag(currentClass);//dont need this?
-                pushClassifyTrainer(aux);
+                if (aux != null)
+                    pushClassifyTrainer(aux);
                 if (samplesClassifier.size() % (nSamples) == 0 && samplesClassifier.size() != 0) { //triggers
                     setTrain(false);
                     currentClass++;
                 }
-            }
-            else if(classify){
+            } else if (classify) {
                 pushClassifier(aux[0]);
             }
 
@@ -234,7 +240,7 @@ public class FeatureCalculator {
     }
 
     //Making the 100 x 40 matrix
-    public void pushClassifyTrainer(DataVector[] inFeatemg) {
+    public static void pushClassifyTrainer(DataVector[] inFeatemg) {
         featureData.add(inFeatemg[1]);
         samplesClassifier.add(inFeatemg[0]);
         classes.add(currentClass);
@@ -245,38 +251,26 @@ public class FeatureCalculator {
 
         startClass = System.nanoTime();
 
+//        Log.d("Featureslength: ", String.valueOf(inFeatemg.getLength()));
+
         prediction = classifier.predict(inFeatemg);
-
-        //System.out.print("," + (System.nanoTime() - startClass)); //classification time, 2nd column
-        //System.out.println("Prediction: " + prediction);
-        System.out.println("," + (System.nanoTime() - startCalc)); //total calculation time, 3rd column
-
-        saver.addToFile(predFile, String.valueOf(System.nanoTime()-startCalc) + "," + System.currentTimeMillis());
 
         if (liveView != null) {
             classAct.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    if (prediction != samplesClassifier.size()) {//why would prediction ever be 1000???
-                        try {//sleep to make it look nice for the symposium
-                            thread.sleep(50);
-                        }catch(Exception e){
-                            e.printStackTrace();
-                        }
-                        liveView.setText(gestures.get(prediction));
-                        progressBar.setVisibility(View.INVISIBLE);
-                        uploadButton.setVisibility(View.VISIBLE);
-                        resetButton.setVisibility(View.VISIBLE);
-//                    } else {
-//                        liveView.setText("Training Classifier");
-//                    }
+                    liveView.setText(gestures.get(prediction));
+                    progressBar.setVisibility(View.INVISIBLE);
+                    uploadButton.setVisibility(View.VISIBLE);
+                    resetButton.setVisibility(View.VISIBLE);
+                    trainButton.setVisibility(View.INVISIBLE);
                 }
             });
         }
         ClientCommunicationThread.calculateDiff(prediction, 1);
     }
 
-    public void sendClasses(List<String> classes) {
+    public static void sendClasses(List<String> classes) {
         gestures = classes;
     }
 
@@ -303,7 +297,7 @@ public class FeatureCalculator {
         int temp1Index = 0;
 
         for (int i = 0; i < nFeatures; i++) {
-        //group features per sensor
+            //group features per sensor
             if (featSelected[i]) {
                 for (int j = 0; j < nSensors; j++) {
                     temp.add(n, featureVector.getMatrixValue(tempIndex, j));
@@ -313,8 +307,8 @@ public class FeatureCalculator {
             tempIndex++;
         }
 
-        for (int j=0;j<nDimensions;j++){
-            if(imuSelected[j]) {
+        for (int j = 0; j < nDimensions; j++) {
+            if (imuSelected[j]) {
                 for (int i = 0; i < nIMUFeatures; i++) {
                     temp.add(n, imuFeatureVector.getMatrixValue(i, j));
                     n++;
@@ -322,7 +316,7 @@ public class FeatureCalculator {
             }
         }
 
-        if(getTrain()) {//during training we wan to save all 8 sensor data
+        if (getTrain()) {//during training we wan to save all 8 sensor data
             ArrayList<Number> temp1 = new ArrayList<Number>(emgct);
             for (int i = 0; i < nFeatures; i++) {
                 //group features per sensor
@@ -332,8 +326,8 @@ public class FeatureCalculator {
                 }
                 temp1Index++;
             }
-            for (int i = 0;i < nIMUFeatures; i++){
-                for (int j=0;j<nDimensions;j++){
+            for (int i = 0; i < nIMUFeatures; i++) {
+                for (int j = 0; j < nDimensions; j++) {
                     temp1.add(k, imuFeatureVector.getMatrixValue(i, j));
                     k++;
                 }
@@ -441,15 +435,17 @@ public class FeatureCalculator {
             AUMatrix.add(tempAU);
         }
 
-        for(int sensorIt = 0; sensorIt < nSensors; sensorIt++){
+        for (int sensorIt = 0; sensorIt < nSensors; sensorIt++) {
             int sensorNext = sensorIt + 1;
-            if(sensorNext == 8){ sensorNext = 0;}
+            if (sensorNext == 8) {
+                sensorNext = 0;
+            }
             float tempValue = 0;
-            for(int it = 0; it < winsize; it++){
-                tempValue += Math.abs((AUMatrix.get(sensorIt).get(it).floatValue()/ featemg.getMatrixValue(0,sensorIt)) - (AUMatrix.get(sensorNext).get(it).floatValue()/ featemg.getMatrixValue(0,sensorNext)));
+            for (int it = 0; it < winsize; it++) {
+                tempValue += Math.abs((AUMatrix.get(sensorIt).get(it).floatValue() / featemg.getMatrixValue(0, sensorIt)) - (AUMatrix.get(sensorNext).get(it).floatValue() / featemg.getMatrixValue(0, sensorNext)));
             }
             //Feature 5 Adjacency Uniqueness
-            featemg.setMatrixValue(5, sensorIt,(tempValue/winsize) * 25); // multiply by 25 to scale the value of tempValue/winsize
+            featemg.setMatrixValue(5, sensorIt, (tempValue / winsize) * 25); // multiply by 25 to scale the value of tempValue/winsize
         }
 
         return featemg;
@@ -475,19 +471,26 @@ public class FeatureCalculator {
         winincr = newWinincr;
     }
 
-    public void reset() {
+    public static void reset() {
         setClassify(false);
         setTrain(false);
         samplesClassifier = new ArrayList<>();
+        aux = null;
         classes = new ArrayList<>();
+        currentClass = 0;
+        classifier.reset();
         liveView.setText("");
-        thread.close();
-        clientThread.close();
-        thread.start();
-        clientThread.start();
+        trainButton.setVisibility(View.INVISIBLE);
+//        if(thread != null)
+//            thread.close();
+//            thread.start();
+//
+//        if(clientThread != null)
+//            clientThread.close();
+//            clientThread.start();
     }
 
-    public void pushIMUFeatureBuffer(DataVector data){
+    public void pushIMUFeatureBuffer(DataVector data) {
         imusamplebuffer.add(imuibuf, data);
         if (imusamplebuffer.size() > bufsize)//limit size of buffer to bufsize
             imusamplebuffer.remove(samplebuffer.size() - 1);
@@ -507,27 +510,35 @@ public class FeatureCalculator {
                     sum += imusamplebuf.get(i).getValue(d).floatValue();
                     i = (i + bufsize + 1) % bufsize;
                 }
-                featimu.setMatrixValue(ft, d, sum/(winsize/4));
+                featimu.setMatrixValue(ft, d, sum / (winsize / 4));
             }
         }
         return featimu;
     }
 //reset
 
-    public void setFeatSelected(boolean[] boos){
+    public void setFeatSelected(boolean[] boos) {
         featSelected = boos;
     }
 
-    public void setIMUSelected(boolean[] boos){
+    public void setIMUSelected(boolean[] boos) {
         imuSelected = boos;
     }
 
-    public void setNumIMUSelected(int imus){
+    public void setNumIMUSelected(int imus) {
         nIMUSensors = imus;
     }
 
-    public void setNumFeatSelected(int feats){
+    public void setNumFeatSelected(int feats) {
         nFeatures = feats;
+    }
+
+    public static void setClasses(ArrayList<Integer> c) {
+        classes = c;
+    }
+
+    public static void setSamplesClassifier(ArrayList<DataVector> s) {
+        samplesClassifier = s;
     }
 
 }
@@ -567,11 +578,11 @@ class twoDimArray {
         matrix.set(numRow, temp);
     }
 
-    public ArrayList<DataVector> getDataVector(){
+    public ArrayList<DataVector> getDataVector() {
         ArrayList<DataVector> data = new ArrayList<>();
-        for (int i=0;i<numRow;i++){
+        for (int i = 0; i < numRow; i++) {
             ArrayList<Number> row = this.getInnerArray(i);
-            data.add(new DataVector(0,row.size(),row));
+            data.add(new DataVector(0, row.size(), row));
         }
         return data;
     }
@@ -580,6 +591,7 @@ class twoDimArray {
     public ArrayList<Number> getInnerArray(int inRow) {
         return matrix.get(inRow);
     }
+
     public void addRow(ArrayList inRow) {
         matrix.add(inRow);
     }

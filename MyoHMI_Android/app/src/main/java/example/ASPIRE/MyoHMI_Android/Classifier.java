@@ -244,8 +244,8 @@ public class Classifier {
 
     public void trainLDA() {
         //if selected gestures is not zero
-        Toast.makeText(activity, "Training LDA", Toast.LENGTH_SHORT).show();
         if (!trainedLDA) {
+            Log.d("tvp length: ", String.valueOf(trainVectorP.length));
             lda = new LDA(trainVectorP, classes, 0);
             trainedLDA = true;
         }

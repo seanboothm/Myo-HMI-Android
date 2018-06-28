@@ -1,18 +1,34 @@
 [
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout-large-v4/mytextview.xml",
-        "source": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/res/layout-large/mytextview.xml"
+        "merged": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\myradioview.xml",
+        "source": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\myradioview.xml"
     },
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout-large-v4/progress.xml",
-        "source": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/res/layout-large/progress.xml"
+        "merged": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\myradioview.xml",
+        "source": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\myradioview.xml"
     },
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout-large-v4/myradioview.xml",
-        "source": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/res/layout-large/myradioview.xml"
+        "merged": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\upload_dialog.xml",
+        "source": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\upload_dialog.xml"
     },
     {
-        "merged": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/build/intermediates/res/merged/debug/layout-large-v4/upload_dialog.xml",
-        "source": "/Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/res/layout-large/upload_dialog.xml"
+        "merged": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\mytextview.xml",
+        "source": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\mytextview.xml"
+    },
+    {
+        "merged": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\progress.xml",
+        "source": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\progress.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\progress.xml",
+        "source": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\progress.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\upload_dialog.xml",
+        "source": "C:\\Users\\Alex\\Dropbox\\Desktop\\Vagrant\\MyoHMI_Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\upload_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\build\\intermediates\\res\\merged\\debug\\layout-large-v4\\mytextview.xml",
+        "source": "C:\\Users\\ricardocolin\\Desktop\\Desktop\\Projects\\Aspires_Project\\Myo-HMI-Android\\MyoHMI_Android\\app\\src\\main\\res\\layout-large\\mytextview.xml"
     }
 ]
