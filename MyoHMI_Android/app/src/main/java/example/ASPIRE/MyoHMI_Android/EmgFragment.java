@@ -1,5 +1,6 @@
 package example.ASPIRE.MyoHMI_Android;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -14,9 +15,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,6 +73,8 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
 
     private boolean click = false;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,28 +126,35 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                 connectingText.setVisibility(View.VISIBLE);
                 gestureText.setText("");
 
-                mLEScanner.startScan(mScanCallback);
+                //mLEScanner.startScan(mScanCallback);
+                BluetoothLeScanner scanner = mBluetoothAdapter.getBluetoothLeScanner();
+                if (scanner != null) {
+                    scanner.startScan(mScanCallback);
+                } else {
+                    // Device Bluetooth is disabled; check and prompt user to enable.
+                }
             }
-        }
+
 
 //        IntentFilter filter = new IntentFilter(mBluetoothAdapter.ACTION_STATE_CHANGED);
 //        getActivity().registerReceiver(mReceiver, filter);
 
-        View emgbutton = v.findViewById(R.id.iEMG);
-        emgbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickedemg(v);
-            }
-        });
+            View emgbutton = v.findViewById(R.id.iEMG);
+            emgbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickedemg(v);
+                }
+            });
 
-        View vibbutton = v.findViewById(R.id.iVibrate);
-        vibbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickedvib(v);
-            }
-        });
+            View vibbutton = v.findViewById(R.id.iVibrate);
+            vibbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickedvib(v);
+                }
+            });
+        }
 
         return v;
     }
@@ -178,11 +190,19 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
     }
 
     private ScanCallback mScanCallback = new ScanCallback() {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             BluetoothDevice device = result.getDevice();
             if (deviceName.equals(device.getName())) {
-                mLEScanner.stopScan(scanCallback);
+                //mLEScanner.stopScan(scanCallback);
+                BluetoothLeScanner scanner = mBluetoothAdapter.getBluetoothLeScanner();
+                if (scanner != null) {
+                    scanner.stopScan(mScanCallback);
+                } else {
+                    // Device Bluetooth is disabled; scanning should already be stopped, nothing to do here.
+                }
+
                 // Trying to connect GATT
 
                 plotter = new Plotter(mHandler, graph);
