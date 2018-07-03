@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.0'
+    compileSdkVersion 27
+    //buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "example.ASPIRE.MyoHMI_Android"
-        minSdkVersion 21
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -25,27 +25,27 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.2.0'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    testImplementation 'junit:junit:4.12'
 //    compile 'com.echo:holographlibrary:1.0'
     //compile 'com.github.Androguide:HoloGraphLibrary:1.0'
-    compile project(':HoloGraphLibrary')
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
-    compile 'com.github.haifengl:smile-core:1.0.4'
+    implementation project(':HoloGraphLibrary')
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    implementation 'com.github.haifengl:smile-core:1.0.4'
 
-    compile 'com.amazonaws:aws-android-sdk-lambda:2.2.+'
-    compile 'com.amazonaws:aws-android-sdk-core:2.2.+'
-    compile 'com.amazonaws:aws-android-sdk-cognito:2.2.+'
+    implementation 'com.amazonaws:aws-android-sdk-lambda:2.2.+'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.2.+'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.2.+'
     //compile 'com.amazonaws:aws-android-sdk-iot:2.2.+'
 
-    compile 'com.amazonaws:aws-android-sdk-s3:2.4.4'
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.4.4'
     //compile files('libs/aws-android-sdk-cognito-2.4.5.jar')
-    compile 'com.android.support:percent:22.2.0'
+    implementation 'com.android.support:percent:27.1.1'
 }
 
 buildscript {
@@ -65,9 +65,10 @@ buildscript {
 
 apply plugin: 'me.tatarka.retrolambda'
 
+/*
 android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
+}*/
