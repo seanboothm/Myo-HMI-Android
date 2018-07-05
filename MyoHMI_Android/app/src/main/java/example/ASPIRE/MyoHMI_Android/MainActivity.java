@@ -1,5 +1,7 @@
 package example.ASPIRE.MyoHMI_Android;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.bluetooth.le.ScanResult;
 import android.content.Intent;
 import android.graphics.Color;
@@ -237,7 +239,14 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.disconnect:
-                closeBLEGatt();
+                Intent mStartActivity = new Intent(MainActivity.this, MainActivity.class);
+                int mPendingIntentId = 12;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(MainActivity.this, mPendingIntentId, mStartActivity,
+                        PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager) MainActivity.this.getSystemService(getApplicationContext().ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                System.exit(0);
+                //closeBLEGatt();
                 Toast.makeText(getApplicationContext(), "Close GATT", Toast.LENGTH_SHORT).show();
                 return true;
         }
