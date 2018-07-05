@@ -245,7 +245,7 @@ public class ListActivity extends AppCompatActivity {
 
     private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
         @Override
-        public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+        public void onLeScan(final BluetoothDevice device, int rssi, byte[] scanRecord) {
             Log.d("BTScan", "ENTERED onLeScan");
             runOnUiThread(new Runnable() {
                 @Override

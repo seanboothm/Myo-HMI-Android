@@ -2,6 +2,7 @@ package example.ASPIRE.MyoHMI_Android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -11,6 +12,7 @@ import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
@@ -30,6 +32,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.echo.holographlibrary.LineGraph;
 import com.github.mikephil.charting.charts.RadarChart;
@@ -67,14 +71,14 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
     private Plotter plotter;
     Activity activity;
     private ProgressBar prog;
+    private ToggleButton emgButton;
 
     private ScanCallback scanCallback = new ScanCallback() {
     };
 
     private boolean click = false;
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,8 +87,10 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
 
 //        emgDataText = (TextView)v.findViewById(R.id.emgDataTextView);
         gestureText = (TextView) v.findViewById(R.id.gestureTextView);
+        emgButton = v.findViewById(R.id.iEMG);
+        View vibrateButton = v.findViewById(R.id.iVibrate);
         gestureText.setTextColor(Color.rgb(38, 38, 38));
-        graph = (LineGraph) v.findViewById(R.id.holo_graph_view);
+        graph = v.findViewById(R.id.holo_graph_view);
         mHandler = new Handler();
         activity = this.getActivity();
 
@@ -104,12 +110,16 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
         deviceName = intent.getStringExtra(ListActivity.TAG);
 
         if (deviceName != null) {
+
             // Ensures Bluetooth is available on the device and it is enabled. If not,
             // displays a dialog requesting user permission to enable Bluetooth.
             if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
+
+
+
                 // Scanning Time out by Handler.
                 // The device scanning needs high energy.
 
@@ -139,16 +149,65 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
 //        IntentFilter filter = new IntentFilter(mBluetoothAdapter.ACTION_STATE_CHANGED);
 //        getActivity().registerReceiver(mReceiver, filter);
 
-            View emgbutton = v.findViewById(R.id.iEMG);
-            emgbutton.setOnClickListener(new View.OnClickListener() {
+
+            /*if (MyoGattCallback.myoConnected == null) {
+
+                Toast.makeText(getContext(), "OUTSIDE'", Toast.LENGTH_LONG).show();
+
+                Toast.makeText(getContext(), "On the top right corner, select 'Connect'", Toast.LENGTH_LONG).show();
+
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                alertDialog.setTitle("Myo not detected");
+                alertDialog.setMessage("Myo armband should be connected before training gestures.");
+                alertDialog.setIcon(R.drawable.stop_icon);
+
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "On the top right corner, select 'Connect'", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                alertDialog.show();
+
+            } else {
+                Toast.makeText(getContext(), "HEY", Toast.LENGTH_LONG).show();
+
+
+
+            }*/
+
+
+
+            emgButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickedemg(v);
+                    if (MyoGattCallback.myoConnected == null) {
+                       if (emgButton.isChecked()){
+                         emgButton.setEnabled(false);
+                         emgButton.setChecked(false);
+                           Toast.makeText(getContext(), "IS NULL", Toast.LENGTH_LONG).show();
+
+                       }
+
+                    } else {
+                        emgButton.setEnabled(true);
+                        emgButton.setChecked(true);
+                        Toast.makeText(getContext(), "GOOD", Toast.LENGTH_LONG).show();
+
+                        clickedemg(v);
+
+
+                    }
+
+
+
+
+
                 }
             });
 
-            View vibbutton = v.findViewById(R.id.iVibrate);
-            vibbutton.setOnClickListener(new View.OnClickListener() {
+
+            vibrateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     clickedvib(v);
