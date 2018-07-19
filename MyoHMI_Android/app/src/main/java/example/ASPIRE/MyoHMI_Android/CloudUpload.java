@@ -62,12 +62,22 @@ import java.util.List;
  * UploadActivity is a ListActivity of uploading, and uploaded records as well
  * as buttons for managing the uploads and creating new ones.
  */
+
+
+
+
+
+
+
 public class  CloudUpload {
 
+
     View view;
-    Button cloudButton;
+ //  Button cloudButton = (Button) findViewById(R.id.btnCloud);
     Activity activity;
     Context context;
+
+
 
     public static boolean delete = false;
     // Indicates that no upload is currently selected
@@ -133,6 +143,9 @@ public class  CloudUpload {
     public File getFile() {return file;}
 }
 
+
+//===================================?=====================================
+
 class UploadListener implements TransferListener {
 
     private CloudUpload cloudUpload = new CloudUpload();
@@ -163,3 +176,4 @@ class UploadListener implements TransferListener {
         }
     }
 }
+//===================================?=====================================

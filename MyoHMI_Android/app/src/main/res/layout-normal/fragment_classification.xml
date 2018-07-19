@@ -159,7 +159,6 @@
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/linearLayout">
 
@@ -168,9 +167,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/live"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="100dp"
             android:background="#000000" />
 
         <ImageButton
@@ -178,11 +177,11 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fadingEdge="none|horizontal|vertical"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_train_button"
             android:layout_alignTop="@+id/gesture_detected"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:fadingEdge="none|horizontal|vertical"
+            android:src="@drawable/ic_train_button" />
 
         <TextView
             android:id="@+id/gesture_detected"
@@ -190,8 +189,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text=""
             android:layout_marginTop="160dp"
+            android:text=""
             android:textSize="40sp" />
 
         <ProgressBar
@@ -199,53 +198,53 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:layout_below="@+id/bt_train"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/bt_load"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="68dp"
             android:layout_height="39dp"
-            android:src="@drawable/ic_open_file"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
             android:layout_alignBottom="@+id/view"
             android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/textView3"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="30dp"
-            android:layout_alignTop="@+id/textView3" />
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_open_file" />
 
         <ImageButton
             android:id="@+id/im_upload"
             android:layout_width="74dp"
             android:layout_height="60dp"
+            android:layout_alignBottom="@+id/view"
+            android:layout_marginBottom="7dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@+id/bt_load"
             android:adjustViewBounds="true"
             android:background="#00000000"
             android:cropToPadding="false"
             android:scaleType="fitXY"
             android:src="@drawable/ic_cloud"
-            android:visibility="invisible"
-            android:layout_alignBottom="@+id/view"
-            android:layout_toStartOf="@+id/bt_load"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="7dp"/>
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/im_reset"
             android:layout_width="70dp"
             android:layout_height="63dp"
+            android:layout_alignBottom="@+id/view"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@+id/im_upload"
             android:adjustViewBounds="true"
             android:background="#00000000"
             android:cropToPadding="false"
             android:scaleType="fitXY"
             android:src="@drawable/ic_reset"
-            android:visibility="invisible"
-            android:layout_alignBottom="@+id/view"
-            android:layout_toStartOf="@+id/im_upload"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="6dp"/>
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textView3"
