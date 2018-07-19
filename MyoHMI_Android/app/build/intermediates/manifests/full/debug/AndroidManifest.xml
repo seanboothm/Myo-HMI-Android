@@ -50,15 +50,19 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="example.ASPIRE.MyoHMI_Android.LoginActivity"
+            android:name="example.ASPIRE.MyoHMI_Android.WelcomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name" >
+            android:label="@string/welcome_title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="example.ASPIRE.MyoHMI_Android.LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/login_title" />
         <activity
             android:name="example.ASPIRE.MyoHMI_Android.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
