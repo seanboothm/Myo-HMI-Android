@@ -14,6 +14,9 @@ import java.util.Date;
  * Created by Alex on 6/28/2018.
  */
 
+//we should try bytes in sql instead of objects
+// https://stackoverflow.com/questions/2836646/java-serializable-object-to-byte-array
+
 public class ObjectIO {
 
     File Root = Environment.getExternalStorageDirectory();
