@@ -52,10 +52,11 @@ public class Plotter extends Activity {
 
     public boolean startup = true;
 
-    int[][] dataList1_a = new int[8][50];
-    int[][] dataList1_b = new int[8][50];
+    int[][] dataList1_a = new int[10][50];
+    int[][] dataList1_b = new int[10][50];
 
     private int nowGraphIndex = 3;
+    private static int nowGraphIndexIMU = 0;
 
     private ArrayList<Number> f0, f1, f2, f3, f4, f5;
 
@@ -222,6 +223,69 @@ public class Plotter extends Activity {
         }
     }
 
+    public void pushIMUPlotter(byte[] data) {
+//        setData();
+//        if (currentTab == 3) {
+
+//        Log.d("length", String.valueOf(data.length));
+
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    lineGraph.removeAllLines();
+
+                    for (int inputIndex = 0; inputIndex < 10; inputIndex++) {
+                        dataList1_a[inputIndex][0] = data[0 + inputIndex];
+                        dataList1_b[inputIndex][0] = data[9 + inputIndex];
+                    }
+                    // 折れ線グラフ
+                    int number = 50;
+                    int addNumber = 100;
+                    Line line = new Line();
+                    while (0 < number) {
+                        number--;
+                        addNumber--;
+
+                        //１点目add
+                        if (number != 0) {
+                            for (int setDatalistIndex = 0; setDatalistIndex < 10; setDatalistIndex++) {
+                                dataList1_a[setDatalistIndex][number] = dataList1_a[setDatalistIndex][number - 1];
+                            }
+                        }
+                        LinePoint linePoint = new LinePoint();
+                        linePoint.setY(dataList1_a[nowGraphIndexIMU][number]); //ランダムで生成した値をSet
+                        linePoint.setX(addNumber); //x軸を１ずつずらしてSet
+                        //linePoint.setColor(Color.parseColor("#9acd32")); // 丸の色をSet
+
+                        line.addPoint(linePoint);
+                        //2点目add
+                        /////number--;
+                        addNumber--;
+                        if (number != 0) {
+                            for (int setDatalistIndex = 0; setDatalistIndex < 10; setDatalistIndex++) {
+                                dataList1_b[setDatalistIndex][number] = dataList1_b[setDatalistIndex][number - 1];
+                            }
+                        }
+                        linePoint = new LinePoint();
+                        linePoint.setY(dataList1_b[nowGraphIndexIMU][number]); //ランダムで生成した値をSet
+                        linePoint.setX(addNumber); //x軸を１ずつずらしてSet
+                        //linePoint.setColor(Color.parseColor("#9acd32")); // 丸の色をSet
+
+                        line.addPoint(linePoint);
+                    }
+
+                    line.setColor(lineColor); // 線の色をSet
+
+                    line.setShowingPoints(false);
+                    lineGraph.addLine(line);
+                    lineGraph.setRangeY(-128, 128); // 表示するY軸の最低値・最高値 今回は0から1まで
+
+                }
+            });
+//        }
+    }
+
     public void pushFeaturePlotter(twoDimArray featureData) {
         if (mChart != null && currentTab == 1) {
 //        if (mChart != null) {
@@ -335,42 +399,16 @@ public class Plotter extends Activity {
         nowGraphIndex = emg;
     }
 
-    public void setCurrentTab(int tab) {
-//        if(tab==0){
-//            startup=false;
-//            Log.d("tag", String.valueOf(tab));
-//        }
+    public static void setIMU(int imu) {
+        nowGraphIndexIMU = imu;
+    }
 
+    public void setCurrentTab(int tab) {
         currentTab = tab;
     }
 
     public void setFeatures(boolean[] features) {
-
         featuresSelected = features;
-
-        //if statement for myo connection goes here
-
-//        twoDimArray featemg = new twoDimArray();
-//        featemg.createMatrix(6, 8);
-//
-//        this.setCurrentTab(1);
-//
-//        for(int i=0; i<8; i++){
-//            for (int j=0;j<6;j++){
-//                featemg.setMatrixValue(j, i, 128);
-//            }
-//        }
-//
-//        this.pushFeaturePlotter(featemg);
-//
-//        for(int i=0; i<8; i++){
-//            for (int j=0;j<6;j++){
-//                featemg.setMatrixValue(j, i, 0);
-//            }
-//        }
-//
-//        this.pushFeaturePlotter(featemg);
-//
     }
 
     public float setMaxValue(float inValue){

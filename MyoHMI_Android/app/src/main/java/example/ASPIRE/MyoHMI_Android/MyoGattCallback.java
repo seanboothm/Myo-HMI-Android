@@ -75,6 +75,8 @@ public class MyoGattCallback extends BluetoothGattCallback {
     private Handler mHandler;
 
     private Plotter plotter;
+    private static Plotter imuPlotter;
+    private static Handler imuHandler;
     private ProgressBar progress;
     public static Boolean myoConnected;
 
@@ -99,6 +101,11 @@ public class MyoGattCallback extends BluetoothGattCallback {
 //        clientThread.start();
 
 //        fcalc.connect();
+    }
+
+    public MyoGattCallback(Handler handler, Plotter plot) {
+        imuHandler = handler;
+        imuPlotter = plot;
     }
 
     @Override
@@ -319,7 +326,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
         } else if (IMU_0_ID.equals(characteristic.getUuid().toString())) {
             long systemTime_ms = System.currentTimeMillis();
             byte[] imu_data = characteristic.getValue();
-            plotter.pushPlotter(imu_data);
+            imuPlotter.pushIMUPlotter(imu_data);
             Number[] emg_dataObj = ArrayUtils.toObject(imu_data);
             ArrayList<Number> imu_data_list1 = new ArrayList<>(Arrays.asList(Arrays.copyOfRange(emg_dataObj, 0, 10)));
             ArrayList<Number> imu_data_list2 = new ArrayList<>(Arrays.asList(Arrays.copyOfRange(emg_dataObj, 10, 20)));

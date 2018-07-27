@@ -1,6 +1,7 @@
 package example.ASPIRE.MyoHMI_Android;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.echo.holographlibrary.LineGraph;
 import com.github.mikephil.charting.charts.RadarChart;
 
 import java.util.ArrayList;
@@ -36,7 +38,10 @@ public class ImuFragment extends Fragment {
 
     private FeatureCalculator fcalc = new FeatureCalculator();
 
-
+    private Plotter plotter;
+    private LineGraph graph;
+    private Handler mHandler;
+    private MyoGattCallback callback;
 
     String[] IMUs = new String[]{
             "Orientation W",
@@ -51,7 +56,6 @@ public class ImuFragment extends Fragment {
             "Gyroscope Z",
     };
 
-
     private static boolean[] imuSelected = new boolean[]{false, false, false, false, false, false, false, false, false, false};
 
     @Override
@@ -59,52 +63,53 @@ public class ImuFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_imu, container, false);
         assert v != null;
 
-
         listView_IMU = (ListView) v.findViewById(R.id.listViewIMU);
 
         listView_IMU.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-
         final List<String> IMUArrayList = new ArrayList<String>(Arrays.asList(IMUs));
-
 
         ArrayAdapter<String> adapter_IMU = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, IMUArrayList);
 
         listView_IMU.setAdapter(adapter_IMU);
 
+        graph = v.findViewById(R.id.holo_graph_view_imu);
+
+        mHandler = new Handler();
+
+        plotter = new Plotter(mHandler, graph);
+
+        callback = new MyoGattCallback(mHandler, plotter);
 
         for (int i = 0; i < 10; i++) {
             selectedItemsIMU.add(i, adapter_IMU.getItem(i));
         }
 
-
-
         listView_IMU.setOnItemClickListener((parent, view, position, id) -> {
+            Log.d("selected", String.valueOf(position));
 
-            // selected item
-            String IMU_selectedItem = ((TextView) view).getText().toString();
+            plotter.setIMU(position);
 
-            if (selectedItemsIMU.contains(IMU_selectedItem)) {
-                IMUManager(IMU_selectedItem, true);
-                selectedItemsIMU.remove(IMU_selectedItem); //remove deselected item from the list of selected items
-                numIMU++;
-            } else {
-                IMUManager(IMU_selectedItem, false);
-                selectedItemsIMU.add(IMU_selectedItem); //add selected item to the list of selected items
-                numIMU--;
-            }
-
-            fcalc.setIMUSelected(imuSelected);
-            classifier.setnIMUSensors(numIMU);
-            fcalc.setNumIMUSelected(numIMU);
-
+////             selected item
+//            String IMU_selectedItem = ((TextView) view).getText().toString();
+//
+//            if (selectedItemsIMU.contains(IMU_selectedItem)) {
+//                IMUManager(IMU_selectedItem, true);
+//                selectedItemsIMU.remove(IMU_selectedItem); //remove deselected item from the list of selected items
+//                numIMU++;
+//            } else {
+//                IMUManager(IMU_selectedItem, false);
+//                selectedItemsIMU.add(IMU_selectedItem); //add selected item to the list of selected items
+//                numIMU--;
+//            }
+//
+//            fcalc.setIMUSelected(imuSelected);
+//            classifier.setnIMUSensors(numIMU);
+//            fcalc.setNumIMUSelected(numIMU);
+//
         });
-
-
         return v;
     }
-
-
 
     private void IMUManager(String inFeature, boolean selected) {
         int index = 0;
@@ -116,8 +121,6 @@ public class ImuFragment extends Fragment {
 
         imuSelected[index] = selected;
     }
-
-
 
     public static boolean[] getIMUSelected() {
         return imuSelected;
