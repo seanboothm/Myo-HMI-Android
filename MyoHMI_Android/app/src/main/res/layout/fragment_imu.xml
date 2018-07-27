@@ -66,6 +66,14 @@
 
     </LinearLayout>
 
+    <com.echo.holographlibrary.LineGraph
+        android:id="@+id/holo_graph_view_imu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        />
+
     <!--<android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
