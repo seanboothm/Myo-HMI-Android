@@ -215,7 +215,7 @@ public class FeatureCalculator {
             startFeature = System.nanoTime();
             featureVector = featCalc(samplebuffer);
 
-            imuFeatureVector = featCalcIMU(imusamplebuffer);
+//            imuFeatureVector = featCalcIMU(imusamplebuffer);
             aux = buildDataVector(featureVector, imuFeatureVector);
 
             aux[0].setTimestamp(data.getTimestamp());
@@ -507,7 +507,7 @@ public class FeatureCalculator {
                 i = (imuibuf + bufsize - (winsize / 4)) % bufsize;
                 sum = 0;
                 while (i != imuibuf) {
-                    sum += imusamplebuf.get(i).getValue(d).floatValue();
+//                    sum += imusamplebuf.get(i).getValue(d).floatValue();
                     i = (i + bufsize + 1) % bufsize;
                 }
                 featimu.setMatrixValue(ft, d, sum / (winsize / 4));

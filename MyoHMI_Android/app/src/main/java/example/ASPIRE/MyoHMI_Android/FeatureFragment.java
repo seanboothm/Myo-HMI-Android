@@ -25,18 +25,18 @@ public class FeatureFragment extends Fragment {
     private static final String TAG = "Tab2Fragment";
     private RadarChart mChart;
     private Plotter plotter;
-    ListView listview_Classifier;
+   // ListView listview_Classifier;
     ListView listView_Features;
-    ListView listView_IMU;
+   // ListView listView_IMU;
 
     Classifier classifier = new Classifier();
 
     //create an ArrayList object to store selected items
     ArrayList<String> selectedItems = new ArrayList<String>();
 
-    ArrayList<String> selectedItemsIMU = new ArrayList<String>();
+    //ArrayList<String> selectedItemsIMU = new ArrayList<String>();
 
-    private int numIMU = 0;
+    //private int numIMU = 0;
     private int numFeats = 6;
 
     private FeatureCalculator fcalc = new FeatureCalculator();
@@ -50,7 +50,7 @@ public class FeatureFragment extends Fragment {
             "AdjUnique"
     };
 
-    String[] IMUs = new String[]{
+/*    String[] IMUs = new String[]{
             "Orientation W",
             "Orientation X",
             "Orientation Y",
@@ -61,7 +61,7 @@ public class FeatureFragment extends Fragment {
             "Gyroscope X",
             "Gyroscope Y",
             "Gyroscope Z",
-    };
+    };*/
 
     private static boolean[] featSelected = new boolean[]{true, true, true, true, true, true};
 
@@ -76,30 +76,30 @@ public class FeatureFragment extends Fragment {
 
         listView_Features.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        listView_IMU = (ListView) v.findViewById(R.id.listViewIMU);
+        //listView_IMU = (ListView) v.findViewById(R.id.listViewIMU);
 
-        listView_IMU.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+       // listView_IMU.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         final List<String> FeaturesArrayList = new ArrayList<String>(Arrays.asList(featureNames));
 
-        final List<String> IMUArrayList = new ArrayList<String>(Arrays.asList(IMUs));
+        //final List<String> IMUArrayList = new ArrayList<String>(Arrays.asList(IMUs));
 
         ArrayAdapter<String> adapter_features = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, FeaturesArrayList);
 
-        ArrayAdapter<String> adapter_IMU = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, IMUArrayList);
+        //ArrayAdapter<String> adapter_IMU = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, IMUArrayList);
 
         listView_Features.setAdapter(adapter_features);
 
-        listView_IMU.setAdapter(adapter_IMU);
+       // listView_IMU.setAdapter(adapter_IMU);
 
         for (int i = 0; i < 6; i++) {
             listView_Features.setItemChecked(i, true);
             selectedItems.add(i, adapter_features.getItem(i));
         }
 
-        for (int i = 0; i < 10; i++) {
+        /*for (int i = 0; i < 10; i++) {
             selectedItemsIMU.add(i, adapter_IMU.getItem(i));
-        }
+        }*/
 
         listView_Features.setOnItemClickListener((parent, view, position, id) -> {
 
@@ -126,7 +126,7 @@ public class FeatureFragment extends Fragment {
 
         });
 
-        listView_IMU.setOnItemClickListener((parent, view, position, id) -> {
+/*        listView_IMU.setOnItemClickListener((parent, view, position, id) -> {
 
             // selected item
             String IMU_selectedItem = ((TextView) view).getText().toString();
@@ -145,7 +145,7 @@ public class FeatureFragment extends Fragment {
             classifier.setnIMUSensors(numIMU);
             fcalc.setNumIMUSelected(numIMU);
 
-        });
+        });*/
 
         mChart = (RadarChart) v.findViewById(R.id.chart);
         plotter = new Plotter(mChart);//must pass chart from this fragment
@@ -163,7 +163,7 @@ public class FeatureFragment extends Fragment {
         featSelected[index] = selected;
     }
 
-    private void IMUManager(String inFeature, boolean selected) {
+/*    private void IMUManager(String inFeature, boolean selected) {
         int index = 0;
         for (int i = 0; i < 10; i++) {
             if (inFeature == IMUs[i]) {
@@ -172,7 +172,7 @@ public class FeatureFragment extends Fragment {
         }
 
         imuSelected[index] = selected;
-    }
+    }*/
 
     public String[] getFeatureNames() {
         return featureNames;
@@ -182,7 +182,7 @@ public class FeatureFragment extends Fragment {
         return featSelected;
     }
 
-    public static boolean[] getIMUSelected() {
+    /*public static boolean[] getIMUSelected() {
         return imuSelected;
-    }
+    }*/
 }

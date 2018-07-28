@@ -1,30 +1,80 @@
 package example.ASPIRE.MyoHMI_Android;
 
-import android.os.Bundle;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Handler;
+import android.os.Looper;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
+import com.echo.holographlibrary.LinePoint;
 import com.github.mikephil.charting.charts.RadarChart;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.lang.Math;
+
+import static android.content.Context.SENSOR_SERVICE;
 
 /**
  * Created by Ricardo on 6/20/18.
  */
 
-public class ImuFragment extends Fragment {
+public class ImuFragment extends Fragment implements SensorEventListener{
+
+    byte[] data = {0};
+    private static ImageView img_horizon;
+    private static TextView txt_azimuth;
+    int mAzimuth;
+    private SensorManager mSensorManager;
+    private Sensor mRotationV, mAccelerometer, mMagnetometer;
+    private Context context;
+    float[] rMat = new float[9];
+    float[] orientation = new float[9];
+    private float[] mLastAccelerometer = new float[3];
+    private float[] mLastMagnetometer  = new float[3];
+    private boolean haveSensor = false, haveSensor2 = false;//to check if it has sensors
+    private boolean mlastAccelerometerSet = false;
+    private boolean mLastMagnetometerSet  = false;
+    float roll;
+    float pitch;
+    float yaw;
+    int rot = 0;
+    private Handler mHandler;// = new Handler(Looper.getMainLooper());//works with the UI
+    String stringTemp;//using this for the phone data
+
+    //private LineGraph graph;
+
+
+    public File phoneFile;
+    private SaveData saver;
+    private SaveData saver2;
+
     private static final String TAG = "Tab4Fragment";
+
+    private EmgFragment emg;
 
     ListView listView_IMU;
 
@@ -38,10 +88,7 @@ public class ImuFragment extends Fragment {
 
     private FeatureCalculator fcalc = new FeatureCalculator();
 
-    private Plotter plotter;
-    private LineGraph graph;
-    private Handler mHandler;
-    private MyoGattCallback callback;
+    //private Plotter plotter;
 
     String[] IMUs = new String[]{
             "Orientation W",
@@ -56,62 +103,260 @@ public class ImuFragment extends Fragment {
             "Gyroscope Z",
     };
 
+
     private static boolean[] imuSelected = new boolean[]{false, false, false, false, false, false, false, false, false, false};
 
-    @Override
+    //@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_imu, container, false);
         assert v != null;
 
+        mSensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
+        img_horizon = (ImageView) v.findViewById(R.id.horizon_sphere);
+        txt_azimuth = (TextView) v.findViewById(R.id.txt_result);
         listView_IMU = (ListView) v.findViewById(R.id.listViewIMU);
+        LineGraph li = (LineGraph) v.findViewById(R.id.graph);
 
-        listView_IMU.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        listView_IMU.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         final List<String> IMUArrayList = new ArrayList<String>(Arrays.asList(IMUs));
 
-        ArrayAdapter<String> adapter_IMU = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, IMUArrayList);
-
-        listView_IMU.setAdapter(adapter_IMU);
-
-        graph = v.findViewById(R.id.holo_graph_view_imu);
+        ArrayAdapter<String> adapter_IMU = new ArrayAdapter<String>(getActivity(), R.layout.myradioview, IMUArrayList);
 
         mHandler = new Handler();
 
-        plotter = new Plotter(mHandler, graph);
+        //graph = (LineGraph) v.findViewById(R.id.holo_graph_view_imu);
 
-        callback = new MyoGattCallback(mHandler, plotter);
+        listView_IMU.setAdapter(adapter_IMU);
+        //plotter = new Plotter(mHandler, graph);
+        listView_IMU.setItemChecked(0, true);
 
-        for (int i = 0; i < 10; i++) {
-            selectedItemsIMU.add(i, adapter_IMU.getItem(i));
-        }
+        saver = new SaveData(this.getContext());
+        phoneFile = saver.makeFile("phoneFile");
 
+        emg = new EmgFragment();
+
+        //set OnItemClickListener
         listView_IMU.setOnItemClickListener((parent, view, position, id) -> {
-            Log.d("selected", String.valueOf(position));
 
-            plotter.setIMU(position);
+            classifier.setChoice(position);
 
-////             selected item
-//            String IMU_selectedItem = ((TextView) view).getText().toString();
-//
-//            if (selectedItemsIMU.contains(IMU_selectedItem)) {
-//                IMUManager(IMU_selectedItem, true);
-//                selectedItemsIMU.remove(IMU_selectedItem); //remove deselected item from the list of selected items
-//                numIMU++;
-//            } else {
-//                IMUManager(IMU_selectedItem, false);
-//                selectedItemsIMU.add(IMU_selectedItem); //add selected item to the list of selected items
-//                numIMU--;
-//            }
-//
-//            fcalc.setIMUSelected(imuSelected);
-//            classifier.setnIMUSensors(numIMU);
-//            fcalc.setNumIMUSelected(numIMU);
-//
+            // selected item
+            String Classifier_selectedItem = ((TextView) view).getText().toString();
+
+            Toast.makeText(getActivity(), "selected: " + Classifier_selectedItem, Toast.LENGTH_SHORT).show();
+
         });
+
+        Line l = new Line();
+        LinePoint p = new LinePoint();
+        p.setX(0);
+        p.setY(5);
+        l.addPoint(p);
+        p = new LinePoint();
+        p.setX(8);
+        p.setY(8);
+        l.addPoint(p);
+        p = new LinePoint();
+        p.setX(10);
+        p.setY(4);
+        l.addPoint(p);
+        l.setColor(Color.parseColor("#FFBB33"));
+
+
+        li.addLine(l);
+        li.setRangeY(0, 10);
+        li.setLineToFill(0);
+
+
         return v;
     }
+//____________________Added_by_Danny_Ceron__________________________________________________________
 
-    private void IMUManager(String inFeature, boolean selected) {
+    /*******Working here currently*********/
+    public void sendIMUValues(byte[] data){
+
+        //plotter.pushImuPlotter(data);
+
+        float w,x,y,z;
+
+        //added function to work with the IMU raw data from armband
+        w = (float)data[0];
+        x = (float)data[1];
+        y = (float)data[2];
+        z = (float)data[3];
+        //double check this is good IMU data
+
+        //putting the accelerometer data into and sting and saving it to a file
+        String acceData = String.valueOf(x)+","+String.valueOf(y)+","+String.valueOf(z);
+
+        //saver2.addToFile(phoneFile,acceData);
+
+        roll = (float) Math.atan2(2.0f*(w*x +y*z),1f -2f*(x*x + y*y));//outcome in radians so might need to convert to degrees.
+        pitch = (float) Math.asin(Math.max(-1.0f,Math.min(1.0f,2.0f*(w*y-z*x))));
+        yaw = 0;
+
+        //converting to degrees. converting it to degrees could be one on the same roll calculation line.
+        roll =  roll*(180f/(float)Math.PI);
+        roll = Math.round(roll);
+
+        //String stuffArray =
+
+
+
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                //updates the UI
+                img_horizon.setRotation(roll);
+                txt_azimuth.setText(-roll+"°"+"\nW:" +w+"\nX:"+x+"\nY:"+y+"\nZ:"+z);
+            }
+        });
+    }
+    /*******Working above currently*********/
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event)
+    {
+        //this stuff is actually the accelerometer data
+        float x = event.values[0];
+        float y = event.values[1];
+        float z = event.values[2];
+
+
+        stringTemp = String.valueOf(x)+","+String.valueOf(y)+","+String.valueOf(z);//prints the accelerometer data
+//        if (emg.streaming()) {
+//            //for adding the data into a file in the app
+//            saver.addToFile(phoneFile, stringTemp);
+//       }
+        if(event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR);
+        {
+            SensorManager.getRotationMatrixFromVector(rMat,event.values);
+            mAzimuth = (int) ((Math.toDegrees(SensorManager.getOrientation(rMat,orientation)[0])+360)%360);
+        }
+        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+        {
+            System.arraycopy(event.values,0,mLastAccelerometer,0,event.values.length);
+            mlastAccelerometerSet = true;
+        }
+        else if(event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+        {
+            System.arraycopy(event.values,0,mLastMagnetometer,0,event.values.length);
+            mLastMagnetometerSet = true;
+        }
+        if(mLastMagnetometerSet && mlastAccelerometerSet)
+        {
+            SensorManager.getRotationMatrix(rMat,null,mLastAccelerometer,mLastMagnetometer);
+            SensorManager.getOrientation(rMat, orientation);
+            mAzimuth = (int) ((Math.toDegrees(SensorManager.getOrientation(rMat,orientation)[0])+360)%360);
+        }
+
+        mAzimuth = Math.round(mAzimuth);
+        //System.out.println("this is the phone data"+ mAzimuth);
+//        img_horizon.setRotation(rot);
+//
+//        Log.d("ROT", String.valueOf(rot));
+
+        String where = "NO";
+        if(mAzimuth >= 358||mAzimuth <= 10)
+            where = "N";
+        if(mAzimuth >= 350||mAzimuth <= 280)
+            where = "NW";
+        if(mAzimuth >= 280||mAzimuth <= 260)
+            where = "W";
+        if(mAzimuth >= 360||mAzimuth <= 190)
+            where = "SW";
+        if(mAzimuth >= 190||mAzimuth <= 170)
+            where = "S";
+        if(mAzimuth >= 170||mAzimuth <= 100)
+            where = "SE";
+        if(mAzimuth >= 100||mAzimuth <= 80)
+            where = "E";
+        if(mAzimuth >= 80||mAzimuth <= 10)
+            where = "NE";
+
+        //txt_azimuth.setText(stringTemp);
+
+        //sendIMUValues(byte[] data);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy)
+    {}
+
+    public void start()
+    {
+        if(mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)==null)
+        {
+            if(mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)==null || mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)== null)
+            {
+                noSensonAler();
+            }
+            else{
+                mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+                mMagnetometer  = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
+                //haveSensor = mSensorManager.registerListener(this.mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+                haveSensor= mSensorManager.registerListener(this,mAccelerometer,SensorManager.SENSOR_DELAY_UI);
+                haveSensor2= mSensorManager.registerListener(this,mMagnetometer,SensorManager.SENSOR_DELAY_UI);
+            }
+        }
+        else
+        {
+            mRotationV = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+            haveSensor = mSensorManager.registerListener(this,mRotationV,SensorManager.SENSOR_DELAY_UI);}
+    }
+
+    public void noSensonAler()
+    {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+
+
+        alertDialog.setMessage("your device does")
+                .setCancelable(false)
+                .setNegativeButton("close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        //finish();
+                        stop();
+                    }
+                });
+    }
+
+    public void stop()
+    {
+        if(haveSensor&&haveSensor2)
+        {
+            mSensorManager.unregisterListener(this,mAccelerometer);
+            mSensorManager.unregisterListener(this,mMagnetometer);
+        }
+        else
+        {
+            if(haveSensor)
+            {//unregister the rotation
+                mSensorManager.unregisterListener(this,mRotationV);
+            }
+        }
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        stop();
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        start();
+    }
+    //_____________________________________________________________________________________________
+
+/*    private void IMUManager(String inFeature, boolean selected) {
         int index = 0;
         for (int i = 0; i < 10; i++) {
             if (inFeature == IMUs[i]) {
@@ -122,7 +367,9 @@ public class ImuFragment extends Fragment {
         imuSelected[index] = selected;
     }
 
+
+
     public static boolean[] getIMUSelected() {
         return imuSelected;
-    }
+    }*/
 }

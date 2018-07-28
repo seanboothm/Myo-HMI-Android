@@ -102,13 +102,15 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         TabLayout.Tab EMGTab = tabLayout.newTab();
         TabLayout.Tab FeatureTab = tabLayout.newTab();
-        TabLayout.Tab ClassificationTab = tabLayout.newTab();
         TabLayout.Tab IMUTab = tabLayout.newTab();
+        TabLayout.Tab ClassificationTab = tabLayout.newTab();
+
 
         tabLayout.addTab(EMGTab, 0, true);
         tabLayout.addTab(FeatureTab, 1, true);
-        tabLayout.addTab(ClassificationTab, 2, true);
-        tabLayout.addTab(IMUTab, 3, true);
+        tabLayout.addTab(IMUTab, 2, true);
+        tabLayout.addTab(ClassificationTab, 3, true);
+
 
         tabLayout.setupWithViewPager(mViewPager);
 

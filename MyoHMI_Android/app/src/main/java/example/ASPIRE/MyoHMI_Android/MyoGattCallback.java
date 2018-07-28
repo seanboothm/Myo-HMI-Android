@@ -295,7 +295,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
             byte[] emg_data1 = Arrays.copyOfRange(emg_data,0,8);
             byte[] emg_data2 = Arrays.copyOfRange(emg_data,8,16);
 
-            fcalc.pushFeatureBuffer(emg_data1);
+//            fcalc.pushFeatureBuffer(emg_data1);
             fcalc.pushFeatureBuffer(emg_data2);
 
             byte cloudControl = 0;
