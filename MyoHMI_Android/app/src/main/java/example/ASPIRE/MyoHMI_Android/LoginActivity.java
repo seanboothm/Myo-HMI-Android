@@ -21,6 +21,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     public static boolean loggedIn = false;
+    public static String user = "no_login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
             }
-
         });
 
              tvContinueLink.setOnClickListener(new View.OnClickListener() {
@@ -49,15 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                     Intent continueIntent = new Intent(LoginActivity.this, MainActivity.class);
                     LoginActivity.this.startActivity(continueIntent);
                 }
-
-
-
         });
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String username = etUsername.getText().toString();
+                user = username;
                 final String password = etPassword.getText().toString();
 
                 // Response received from the server

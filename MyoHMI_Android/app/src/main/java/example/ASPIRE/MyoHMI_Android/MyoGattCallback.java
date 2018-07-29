@@ -326,7 +326,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
         } else if (IMU_0_ID.equals(characteristic.getUuid().toString())) {
             long systemTime_ms = System.currentTimeMillis();
             byte[] imu_data = characteristic.getValue();
-            imuPlotter.pushIMUPlotter(imu_data);
+//            imuPlotter.pushIMUPlotter(imu_data);
             Number[] emg_dataObj = ArrayUtils.toObject(imu_data);
             ArrayList<Number> imu_data_list1 = new ArrayList<>(Arrays.asList(Arrays.copyOfRange(emg_dataObj, 0, 10)));
             ArrayList<Number> imu_data_list2 = new ArrayList<>(Arrays.asList(Arrays.copyOfRange(emg_dataObj, 10, 20)));

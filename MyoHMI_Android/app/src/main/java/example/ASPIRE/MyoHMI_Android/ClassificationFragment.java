@@ -1,21 +1,14 @@
 package example.ASPIRE.MyoHMI_Android;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-
-
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothGatt;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.BatteryManager;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -46,7 +39,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
 import org.apache.commons.lang3.ArrayUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -114,6 +113,8 @@ public class ClassificationFragment extends Fragment {
 
     ServerCommunicationThread comm = new ServerCommunicationThread();
 
+    private Context context;
+
     String[] ListElements = new String[]{
             "Rest",
             "Fist",
@@ -150,6 +151,8 @@ public class ClassificationFragment extends Fragment {
 
 //        final Runnable r1, r2;
 
+        context = this.getContext();
+
         this.inflater = inflater;
         this.container = container;
 
@@ -167,11 +170,8 @@ public class ClassificationFragment extends Fragment {
         deleteButton = (ImageButton) v.findViewById(R.id.im_delete);
         uploadButton = (ImageButton) v.findViewById(R.id.im_upload);
         resetButton = (ImageButton) v.findViewById(R.id.im_reset);
-//        listview = (ListView) v.findViewById(R.id.listView);
         listview = (ListView) v.findViewById(R.id.listView);
         listview_Classifier = (ListView) v.findViewById(R.id.listView1);
-//        progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
-
         listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listview_Classifier.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
@@ -180,11 +180,7 @@ public class ClassificationFragment extends Fragment {
 
         cloudUpload = new CloudUpload(getActivity());
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_multiple_choice, ListElementsArrayList);
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.mytextview, ListElementsArrayList);
-
-//        ArrayAdapter<String> adapter_classifier = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_single_choice, ClassifierArrayList);
 
         ArrayAdapter<String> adapter_classifier = new ArrayAdapter<String>(getActivity(), R.layout.myradioview, ClassifierArrayList);
 
@@ -194,7 +190,6 @@ public class ClassificationFragment extends Fragment {
         //selectes lda
         listview_Classifier.setItemChecked(0, true);
 
-        //Kattia: Change 3 to 8 for experiments so that we don't need to select all gestures each time
         for (int i = 0; i < ListElements.length; i++) {
             listview.setItemChecked(i, true);
             selectedItems.add(i, adapter.getItem(i));
@@ -509,6 +504,8 @@ public class ClassificationFragment extends Fragment {
 
         final AlertDialog dialog = upload_pop.create();
 
+        context = this.getContext();
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -530,8 +527,41 @@ public class ClassificationFragment extends Fragment {
         cloud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cloudUpload.beginUpload(file);
                 cloudUpload.setDelete(true);
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+
+                            if (success) {
+                                Log.d("Success ", "uploading emg data");
+                            } else {
+                                Log.d("Failed ", "uploading emg data");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                ArrayList<DataVector> featureRows = fcalc.getFeatureData();
+
+                RequestQueue queue = Volley.newRequestQueue(context);
+                for (int i = 0; i < featureRows.size(); i++) {
+                    double trunc = i/100;
+                    exportEMGRequest emg = new exportEMGRequest(
+                            featureRows.get(i),
+                            ListElementsArrayList.get((int)trunc),
+                            responseListener
+                    );
+                    queue.add(emg);
+                }
+                queue.start();
+
                 Toast.makeText(getActivity(), "Saving on Cloud!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
@@ -656,7 +686,6 @@ public class ClassificationFragment extends Fragment {
         }
         // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            Log.d("IHIHIHIHIHI", "");
             return uri.getPath();
         }
 
