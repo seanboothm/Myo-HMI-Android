@@ -215,7 +215,8 @@ public class FeatureCalculator {
             startFeature = System.nanoTime();
             featureVector = featCalc(samplebuffer);
 
-//            imuFeatureVector = featCalcIMU(imusamplebuffer);
+            imuFeatureVector = featCalcIMU(imusamplebuffer);
+//            imuFeatureVector = new twoDimArray();
             aux = buildDataVector(featureVector, imuFeatureVector);
 
             aux[0].setTimestamp(data.getTimestamp());
