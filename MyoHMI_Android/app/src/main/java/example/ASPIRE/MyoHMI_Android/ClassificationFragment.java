@@ -119,11 +119,11 @@ public class ClassificationFragment extends Fragment {
             "Rest",
             "Fist",
             "Point",
-//            "Open Hand",
-//            "Wave In",
-//            "Wave Out",
-//            "Supination",
-//            "Pronation"
+            "Open Hand",
+            "Wave In",
+            "Wave Out",
+            "Supination",
+            "Pronation"
     };
 
     String[] classifier_options = new String[]{

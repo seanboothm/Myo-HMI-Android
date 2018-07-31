@@ -11,6 +11,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,15 +63,10 @@ public class ImuFragment extends Fragment implements SensorEventListener{
     float pitch;
     float yaw;
     int rot = 0;
-    private Handler mHandler;// = new Handler(Looper.getMainLooper());//works with the UI
+    private Handler mHandler = new Handler(Looper.getMainLooper());//works with the UI
     String stringTemp;//using this for the phone data
 
     //private LineGraph graph;
-
-
-    public File phoneFile;
-    private SaveData saver;
-    private SaveData saver2;
 
     private static final String TAG = "Tab4Fragment";
 
@@ -132,8 +128,6 @@ public class ImuFragment extends Fragment implements SensorEventListener{
         //plotter = new Plotter(mHandler, graph);
         listView_IMU.setItemChecked(0, true);
 
-        saver = new SaveData(this.getContext());
-        phoneFile = saver.makeFile("phoneFile");
 
         emg = new EmgFragment();
 
@@ -174,18 +168,17 @@ public class ImuFragment extends Fragment implements SensorEventListener{
     }
 //____________________Added_by_Danny_Ceron__________________________________________________________
 
-    /*******Working here currently*********/
-    public void sendIMUValues(byte[] data){
+    public void sendIMUValues(DataVector data){
 
         //plotter.pushImuPlotter(data);
 
         float w,x,y,z;
 
         //added function to work with the IMU raw data from armband
-        w = (float)data[0];
-        x = (float)data[1];
-        y = (float)data[2];
-        z = (float)data[3];
+        w = (float)data.getValue(0).byteValue();
+        x = (float)data.getValue(1).byteValue();
+        y = (float)data.getValue(2).byteValue();
+        z = (float)data.getValue(3).byteValue();
         //double check this is good IMU data
 
         //putting the accelerometer data into and sting and saving it to a file
@@ -214,23 +207,11 @@ public class ImuFragment extends Fragment implements SensorEventListener{
             }
         });
     }
-    /*******Working above currently*********/
-
 
     @Override
     public void onSensorChanged(SensorEvent event)
     {
-        //this stuff is actually the accelerometer data
-        float x = event.values[0];
-        float y = event.values[1];
-        float z = event.values[2];
 
-
-        stringTemp = String.valueOf(x)+","+String.valueOf(y)+","+String.valueOf(z);//prints the accelerometer data
-//        if (emg.streaming()) {
-//            //for adding the data into a file in the app
-//            saver.addToFile(phoneFile, stringTemp);
-//       }
         if(event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR);
         {
             SensorManager.getRotationMatrixFromVector(rMat,event.values);
@@ -354,22 +335,5 @@ public class ImuFragment extends Fragment implements SensorEventListener{
         super.onResume();
         start();
     }
-    //_____________________________________________________________________________________________
 
-/*    private void IMUManager(String inFeature, boolean selected) {
-        int index = 0;
-        for (int i = 0; i < 10; i++) {
-            if (inFeature == IMUs[i]) {
-                index = i;
-            }
-        }
-
-        imuSelected[index] = selected;
-    }
-
-
-
-    public static boolean[] getIMUSelected() {
-        return imuSelected;
-    }*/
 }

@@ -79,6 +79,7 @@ public class MyoGattCallback extends BluetoothGattCallback {
     private static Handler imuHandler;
     private ProgressBar progress;
     public static Boolean myoConnected;
+    public ImuFragment imuFragment;
 
     private FeatureCalculator fcalc;//maybe needs to be later in process
 
@@ -336,6 +337,9 @@ public class MyoGattCallback extends BluetoothGattCallback {
 //            dvec2.printDataVector("IMU2");
             fcalc.pushIMUFeatureBuffer(dvec1);
             fcalc.pushIMUFeatureBuffer(dvec2);
+
+            imuFragment = new ImuFragment();
+            imuFragment.sendIMUValues(dvec2);
         }
     }
 
