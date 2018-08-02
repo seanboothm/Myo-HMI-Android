@@ -176,7 +176,7 @@ public class ImuFragment extends Fragment implements SensorEventListener{
 
         //saver2.addToFile(phoneFile,acceData);
 
-        roll = (float) Math.atan2(2.0f*(w*x +y*z),1f -2f*(x*x + y*y));//outcome in radians so might need to convert to degrees.
+        roll = (float) Math.atan2(x,z);//outcome in radians so might need to convert to degrees.
         pitch = (float) Math.asin(Math.max(-1.0f,Math.min(1.0f,2.0f*(w*y-z*x))));
         yaw = 0;
 
@@ -192,8 +192,8 @@ public class ImuFragment extends Fragment implements SensorEventListener{
             @Override
             public void run() {
                 //updates the UI
-                img_horizon.setRotation(roll);
-                txt_azimuth.setText(-roll+"°"+"\nW:" +w+"\nX:"+x+"\nY:"+y+"\nZ:"+z);
+                img_horizon.setRotation(-1*roll);
+                txt_azimuth.setText(roll+"°"+"\nW:" +w+"\nX:"+x+"\nY:"+y+"\nZ:"+z);
             }
         });
     }
