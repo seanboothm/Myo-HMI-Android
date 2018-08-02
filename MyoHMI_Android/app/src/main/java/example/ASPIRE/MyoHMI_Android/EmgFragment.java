@@ -181,7 +181,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                     } else {
                         emgButton.setEnabled(true);
                         emgButton.setChecked(true);
-                        Toast.makeText(getContext(), "GOOD", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(), "GOOD", Toast.LENGTH_LONG).show();
 
                         clickedemg();
 

@@ -1225,10 +1225,10 @@ int string path_password_eye 0x7f0e0024
 int string path_password_eye_mask_strike_through 0x7f0e0025
 int string path_password_eye_mask_visible 0x7f0e0026
 int string path_password_strike_through 0x7f0e0027
-int string search_menu_title 0x7f0e0028
-int string status_bar_notification_info_overflow 0x7f0e0029
-int string title_activity_list 0x7f0e002a
-int string welcome_title 0x7f0e002b
+int string register_title 0x7f0e0028
+int string search_menu_title 0x7f0e0029
+int string status_bar_notification_info_overflow 0x7f0e002a
+int string title_activity_list 0x7f0e002b
 int style AlertDialog_AppCompat 0x7f0f0000
 int style AlertDialog_AppCompat_Light 0x7f0f0001
 int style Animation_AppCompat_Dialog 0x7f0f0002

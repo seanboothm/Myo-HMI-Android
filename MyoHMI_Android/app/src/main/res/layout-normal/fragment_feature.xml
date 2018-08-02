@@ -26,32 +26,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:layout_marginBottomPercent="4%"
-                app:layout_marginTopPercent="4%"
                 android:text="Features"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="26dp"
-                android:layout_alignParentLeft="true"
                 android:textColor="#000000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="@dimen/listTextSize"
+                android:textStyle="bold"
+                android:textSize="17dp"
                 />
 
             <View
                 android:id="@+id/view2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
                 android:layout_below="@+id/textView2"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
                 android:background="#000000" />
+
+
 
             <ListView
                 android:id="@id/listView"
                 android:layout_width="wrap_content"
                 android:layout_height="350dp"
-                android:layout_below="@id/textView2"
+                android:layout_below="@id/view2"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 />

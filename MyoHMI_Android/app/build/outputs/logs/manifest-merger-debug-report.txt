@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
-INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
-INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
-INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
+ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/f2140cb2fc93ec41112c4a16d8ce5897/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:design:27.1.1] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/bb890e22d2dfc65f5988b1b96df5ad63/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/140965df2c707b96035eda6583fc4629/AndroidManifest.xml:17:1-22:12
@@ -24,22 +24,22 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/ricardocolin/.gr
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/00d81ac3c0b7a9c948f36011e6b7b846/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c3a7b62df4cab108f846cc25aba7bfa1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9416f5d983fdf09c32c33f01ed2222ac/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
-INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
-INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
+INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
 	package
 		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:4:5-44
 		INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
+		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
 		INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-80:12
+		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:1-83:12
 		INJECTED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:2:11-69
@@ -174,7 +174,7 @@ ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-
 	android:name
 		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:40:22-72
 application
-ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:42:5-78:19
+ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:42:5-81:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/f2140cb2fc93ec41112c4a16d8ce5897/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/ricardocolin/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/f2140cb2fc93ec41112c4a16d8ce5897/AndroidManifest.xml:9:5-20
 MERGED from [:HoloGraphLibrary] /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/HoloGraphLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-16:19
@@ -199,7 +199,7 @@ MERGED from [com.android.volley:volley:1.1.0] /Users/ricardocolin/.gradle/caches
 activity#example.ASPIRE.MyoHMI_Android.WelcomeActivity
 ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:50:9-59:20
 	android:label
-		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:53:13-50
+		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:53:13-45
 	android:configChanges
 		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:52:13-74
 	android:name
@@ -245,6 +245,10 @@ ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-
 	android:name
 		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:74:13-93
 activity#example.ASPIRE.MyoHMI_Android.RegisterActivity
-ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:77:9-54
+ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:77:9-80:54
+	android:label
+		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:80:13-51
+	android:configChanges
+		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:79:13-74
 	android:name
-		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:77:19-51
+		ADDED from /Users/ricardocolin/Desktop/Desktop/Projects/Aspires_Project/Myo-HMI-Android/MyoHMI_Android/app/src/main/AndroidManifest.xml:78:13-45

@@ -35,77 +35,38 @@
       <file leaf-file-name="EmgFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/EmgFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2115">
-              <caret line="173" column="24" lean-forward="false" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
-              <folding>
-                <element signature="e#7215#7216#0" expanded="true" />
-                <element signature="e#7268#7269#0" expanded="true" />
-                <element signature="e#7368#7369#0" expanded="true" />
-                <element signature="e#7396#7397#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Plotter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/Plotter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="329" column="28" lean-forward="false" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
-              <folding>
-                <element signature="e#7041#7048#0" expanded="true" />
-                <element signature="e#7098#7105#0" expanded="true" />
-                <element signature="e#7155#7162#0" expanded="true" />
-                <element signature="e#18484#18496#0" expanded="true" />
-                <element signature="e#18566#18578#0" expanded="true" />
-                <element signature="e#18648#18660#0" expanded="true" />
-                <element signature="e#18730#18742#0" expanded="true" />
-                <element signature="e#18812#18824#0" expanded="true" />
-                <element signature="e#18894#18906#0" expanded="true" />
-                <element signature="e#19764#19779#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="60" column="45" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+            <state relative-caret-position="205">
+              <caret line="183" column="26" lean-forward="false" selection-start-line="183" selection-start-column="26" selection-end-line="183" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImuFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ImuFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2370">
-              <caret line="195" column="75" lean-forward="false" selection-start-line="195" selection-start-column="75" selection-end-line="195" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_imu.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_imu.xml">
-          <provider editor-type-id="android-designer2">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="73" column="42" lean-forward="false" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="33">
+              <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <folding>
+                <element signature="e#2046#2064#0" expanded="true" />
+                <element signature="e#2338#2356#0" expanded="true" />
+                <element signature="e#2742#2763#0" expanded="true" />
+                <element signature="e#2926#2944#0" expanded="true" />
+                <element signature="e#3107#3136#0" expanded="true" />
+                <element signature="e#3453#3477#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyoGattCallback.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/MyoGattCallback.java">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3450">
-              <caret line="253" column="17" lean-forward="false" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
+            <state relative-caret-position="30">
+              <caret line="2" column="48" lean-forward="false" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -125,7 +86,7 @@
       <find>xAxi</find>
       <find>set1</find>
       <find>LineData</find>
-      <find>LineData</find>
+      <find>GOOD</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -3176,16 +3137,22 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ImuFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-normal/fragment_emg.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/EmgFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_imu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/Plotter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_imu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-normal/fragment_feature.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-normal/classification_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/EmgFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1204" />
-    <option name="height" value="710" />
+    <option name="x" value="125" />
+    <option name="y" value="117" />
+    <option name="width" value="997" />
+    <option name="height" value="814" />
   </component>
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
@@ -3202,7 +3169,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -3232,12 +3201,16 @@
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
+            <path>
+              <item name="MyoHMI_Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -3245,7 +3218,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="device.picker.selection" value="H5NPCX077497JVN" />
+    <property name="device.picker.selection" value="6edaee3438f11ad1" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -3427,7 +3400,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1204" height="710" extended-state="0" />
+    <frame x="125" y="117" width="997" height="814" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3436,6 +3410,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3443,7 +3418,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25731498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.313089" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3457,7 +3432,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -3476,10 +3450,66 @@
         <state relative-caret-position="2115">
           <caret line="173" column="24" lean-forward="false" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
           <folding>
-            <element signature="e#7215#7216#0" expanded="true" />
-            <element signature="e#7268#7269#0" expanded="true" />
-            <element signature="e#7368#7369#0" expanded="true" />
-            <element signature="e#7396#7397#0" expanded="true" />
+            <element signature="e#7217#7218#0" expanded="false" />
+            <element signature="e#7270#7271#0" expanded="false" />
+            <element signature="e#7370#7371#0" expanded="false" />
+            <element signature="e#7398#7399#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="60" column="45" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ImuFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2370">
+          <caret line="195" column="75" lean-forward="false" selection-start-line="195" selection-start-column="75" selection-end-line="195" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_imu.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" column="42" lean-forward="false" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/MyoGattCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3450">
+          <caret line="253" column="17" lean-forward="false" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/Plotter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4260">
+          <caret line="329" column="28" lean-forward="false" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/EmgFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2115">
+          <caret line="173" column="24" lean-forward="false" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
+          <folding>
+            <element signature="e#7217#7218#0" expanded="false" />
+            <element signature="e#7270#7271#0" expanded="false" />
+            <element signature="e#7370#7371#0" expanded="false" />
+            <element signature="e#7398#7399#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3523,18 +3553,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3825">
           <caret line="300" column="33" lean-forward="false" selection-start-line="300" selection-start-column="33" selection-end-line="300" selection-end-column="33" />
-          <folding>
-            <element signature="e#7041#7048#0" expanded="true" />
-            <element signature="e#7098#7105#0" expanded="true" />
-            <element signature="e#7155#7162#0" expanded="true" />
-            <element signature="e#18484#18496#0" expanded="true" />
-            <element signature="e#18566#18578#0" expanded="true" />
-            <element signature="e#18648#18660#0" expanded="true" />
-            <element signature="e#18730#18742#0" expanded="true" />
-            <element signature="e#18812#18824#0" expanded="true" />
-            <element signature="e#18894#18906#0" expanded="true" />
-            <element signature="e#19764#19779#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3586,14 +3605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3390">
-          <caret line="270" column="24" lean-forward="true" selection-start-line="270" selection-start-column="24" selection-end-line="270" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/MyoCommandList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -3617,17 +3628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_imu.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="73" column="42" lean-forward="false" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ImuFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2370">
@@ -3644,34 +3644,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/EmgFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/Plotter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2115">
-          <caret line="173" column="24" lean-forward="false" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
-          <folding>
-            <element signature="e#7215#7216#0" expanded="true" />
-            <element signature="e#7268#7269#0" expanded="true" />
-            <element signature="e#7368#7369#0" expanded="true" />
-            <element signature="e#7396#7397#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2924">
+          <caret line="317" column="26" lean-forward="true" selection-start-line="317" selection-start-column="26" selection-end-line="317" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/Plotter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_imu.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="329" column="28" lean-forward="false" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
+        <state relative-caret-position="372">
+          <caret line="28" column="39" lean-forward="false" selection-start-line="21" selection-start-column="3" selection-end-line="28" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-normal/fragment_feature.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-normal/classification_fragment.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/ListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="142" column="6" lean-forward="false" selection-start-line="142" selection-start-column="6" selection-end-line="142" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/example/ASPIRE/MyoHMI_Android/EmgFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="183" column="26" lean-forward="false" selection-start-line="183" selection-start-column="26" selection-end-line="183" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="48" lean-forward="false" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding>
-            <element signature="e#7041#7048#0" expanded="true" />
-            <element signature="e#7098#7105#0" expanded="true" />
-            <element signature="e#7155#7162#0" expanded="true" />
-            <element signature="e#18484#18496#0" expanded="true" />
-            <element signature="e#18566#18578#0" expanded="true" />
-            <element signature="e#18648#18660#0" expanded="true" />
-            <element signature="e#18730#18742#0" expanded="true" />
-            <element signature="e#18812#18824#0" expanded="true" />
-            <element signature="e#18894#18906#0" expanded="true" />
-            <element signature="e#19764#19779#0" expanded="true" />
+            <element signature="e#2046#2064#0" expanded="true" />
+            <element signature="e#2338#2356#0" expanded="true" />
+            <element signature="e#2742#2763#0" expanded="true" />
+            <element signature="e#2926#2944#0" expanded="true" />
+            <element signature="e#3107#3136#0" expanded="true" />
+            <element signature="e#3453#3477#0" expanded="true" />
           </folding>
         </state>
       </provider>
