@@ -1,8 +1,6 @@
 package example.ASPIRE.MyoHMI_Android;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -10,17 +8,12 @@ import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -28,7 +21,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,11 +30,9 @@ import android.widget.ToggleButton;
 import com.echo.holographlibrary.LineGraph;
 import com.github.mikephil.charting.charts.RadarChart;
 
-import static android.R.attr.bitmap;
 import static android.content.Context.BLUETOOTH_SERVICE;
 //import static example.ASPIRE.MyoHMI_Android.R.id.ConnectingText;
 import static example.ASPIRE.MyoHMI_Android.R.id.conncectionProgress;
-import static example.ASPIRE.MyoHMI_Android.R.id.imageView;
 
 /**
  * Created by User on 2/28/2017.
@@ -57,7 +47,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
     private BluetoothAdapter mBluetoothAdapter;
     private BluetoothGatt mBluetoothGatt;
     //    private TextView emgDataText;
-    private TextView gestureText;
+    private TextView myoConnectionText;
     private TextView connectingText;
     private BluetoothLeScanner mLEScanner;
 
@@ -86,10 +76,10 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
         assert v != null;
 
 //        emgDataText = (TextView)v.findViewById(R.id.emgDataTextView);
-        gestureText = (TextView) v.findViewById(R.id.gestureTextView);
+        myoConnectionText = (TextView) v.findViewById(R.id.myoConnection);
         emgButton = v.findViewById(R.id.iEMG);
         View vibrateButton = v.findViewById(R.id.iVibrate);
-        gestureText.setTextColor(Color.rgb(38, 38, 38));
+        myoConnectionText.setTextColor(Color.rgb(38, 38, 38));
         graph = v.findViewById(R.id.holo_graph_view);
         mHandler = new Handler();
         activity = this.getActivity();
@@ -109,6 +99,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
         Intent intent = getActivity().getIntent();
         deviceName = intent.getStringExtra(ListActivity.TAG);
 
+
         if (deviceName != null) {
 
             // Ensures Bluetooth is available on the device and it is enabled. If not,
@@ -117,7 +108,6 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             } else {
-
 
 
                 // Scanning Time out by Handler.
@@ -134,7 +124,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                 */
                 prog.setVisibility(View.VISIBLE);
                 connectingText.setVisibility(View.VISIBLE);
-                gestureText.setText("");
+                myoConnectionText.setText("");
 
                 //mLEScanner.startScan(mScanCallback);
                 BluetoothLeScanner scanner = mBluetoothAdapter.getBluetoothLeScanner();
@@ -177,30 +167,26 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
             }*/
 
 
-
             emgButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (MyoGattCallback.myoConnected == null) {
-                       if (emgButton.isChecked()){
-                         emgButton.setEnabled(false);
-                         emgButton.setChecked(false);
-                           Toast.makeText(getContext(), "IS NULL", Toast.LENGTH_LONG).show();
+                        if (emgButton.isChecked()) {
+                            emgButton.setEnabled(false);
+                            emgButton.setChecked(false);
+                            Toast.makeText(getContext(), "IS NULL", Toast.LENGTH_LONG).show();
 
-                       }
+                        }
 
                     } else {
                         emgButton.setEnabled(true);
                         emgButton.setChecked(true);
                         Toast.makeText(getContext(), "GOOD", Toast.LENGTH_LONG).show();
 
-                        clickedemg(v);
+                        clickedemg();
 
 
                     }
-
-
-
 
 
                 }
@@ -220,18 +206,17 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        clickedemg(v);
+        clickedemg();
     }
 
-    public void clickedemg(View v) {
+    public void clickedemg() {
         click = !click;
         Log.d("Tag", String.valueOf(click));
         if (click) {
             if (mBluetoothGatt == null || !mMyoCallback.setMyoControlCommand(commandList.sendImuAndEmg())) {
                 Log.d(TAG, "False EMG");
-            }
-            else{
-                gestureText.setText("");
+            } else {
+                myoConnectionText.setText("");
             }
         } else {
             if (mBluetoothGatt == null
@@ -265,7 +250,7 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
                 // Trying to connect GATT
 
                 plotter = new Plotter(mHandler, graph);
-                mMyoCallback = new MyoGattCallback(mHandler, gestureText, prog, connectingText, plotter, getView());
+                mMyoCallback = new MyoGattCallback(mHandler, myoConnectionText, prog, connectingText, plotter, getView());
                 mBluetoothGatt = device.connectGatt(getActivity(), false, mMyoCallback);
                 mMyoCallback.setBluetoothGatt(mBluetoothGatt);
             }
@@ -318,28 +303,5 @@ public class EmgFragment extends Fragment implements View.OnClickListener {
         }
     };
 
-//    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            final String action = intent.getAction();
-//            Log.d("","Bluetooth on$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-//            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-//                final int state = intent.getIntExtra(mBluetoothAdapter.EXTRA_STATE,
-//                        mBluetoothAdapter.ERROR);
-//                switch (state) {
-//                    case BluetoothAdapter.STATE_OFF:
-//                        break;
-//                    case BluetoothAdapter.STATE_TURNING_OFF:
-//                        break;
-//                    case BluetoothAdapter.STATE_ON:
-//                        Log.d("","Bluetooth on$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-//                        break;
-//                    case BluetoothAdapter.STATE_TURNING_ON:
-//                        Log.d("","Bluetooth on$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-//                        break;
-//                }
-//            }
-//        }
-//    };
 
 }

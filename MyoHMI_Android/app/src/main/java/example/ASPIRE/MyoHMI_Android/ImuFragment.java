@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
 
 import java.io.File;
@@ -84,7 +85,8 @@ public class ImuFragment extends Fragment implements SensorEventListener{
 
     private FeatureCalculator fcalc = new FeatureCalculator();
 
-    //private Plotter plotter;
+    private LineChart cubicLineChart;
+    private Plotter plotter;
 
     String[] IMUs = new String[]{
             "Orientation W",
@@ -111,10 +113,19 @@ public class ImuFragment extends Fragment implements SensorEventListener{
         img_horizon = (ImageView) v.findViewById(R.id.horizon_sphere);
         txt_azimuth = (TextView) v.findViewById(R.id.txt_result);
         listView_IMU = (ListView) v.findViewById(R.id.listViewIMU);
-        LineGraph li = (LineGraph) v.findViewById(R.id.graph);
+
+
+        cubicLineChart = v.findViewById(R.id.chart);
+
+        mHandler = new Handler();
+
+        plotter = new Plotter(mHandler ,cubicLineChart);//must pass chart from this fragment
 
 
         listView_IMU.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+
+
 
         final List<String> IMUArrayList = new ArrayList<String>(Arrays.asList(IMUs));
 
@@ -142,27 +153,6 @@ public class ImuFragment extends Fragment implements SensorEventListener{
             Toast.makeText(getActivity(), "selected: " + Classifier_selectedItem, Toast.LENGTH_SHORT).show();
 
         });
-
-        Line l = new Line();
-        LinePoint p = new LinePoint();
-        p.setX(0);
-        p.setY(5);
-        l.addPoint(p);
-        p = new LinePoint();
-        p.setX(8);
-        p.setY(8);
-        l.addPoint(p);
-        p = new LinePoint();
-        p.setX(10);
-        p.setY(4);
-        l.addPoint(p);
-        l.setColor(Color.parseColor("#FFBB33"));
-
-
-        li.addLine(l);
-        li.setRangeY(0, 10);
-        li.setLineToFill(0);
-
 
         return v;
     }
