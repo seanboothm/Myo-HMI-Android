@@ -234,19 +234,35 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.connect:
+            case R.id.connect_myo:
             case MENU_LIST:
                 Intent intent = new Intent(this, ListActivity.class);
                 startActivity(intent);
                 return true;
 
-            case R.id.disconnect:
+            case R.id.disconnect_myo:
                 Intent mStartActivity = new Intent(MainActivity.this, MainActivity.class);
                 int mPendingIntentId = 12;
                 PendingIntent mPendingIntent = PendingIntent.getActivity(MainActivity.this, mPendingIntentId, mStartActivity,
                         PendingIntent.FLAG_CANCEL_CURRENT);
                 AlarmManager mgr = (AlarmManager) MainActivity.this.getSystemService(getApplicationContext().ALARM_SERVICE);
                 mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                System.exit(0);
+                //closeBLEGatt();
+                Toast.makeText(getApplicationContext(), "Close GATT", Toast.LENGTH_SHORT).show();
+                return true;
+                
+            case R.id.connect_hand:
+                Intent intent_hand = new Intent(this, ListActivity.class);
+                startActivity(intent_hand);
+                return true;
+            case R.id.disconnect_hand:
+                Intent mStartActivity_hand = new Intent(MainActivity.this, MainActivity.class);
+                int mPendingIntentId_hand = 13;
+                PendingIntent mPendingIntent_hand = PendingIntent.getActivity(MainActivity.this, mPendingIntentId_hand, mStartActivity_hand,
+                        PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr_hand = (AlarmManager) MainActivity.this.getSystemService(getApplicationContext().ALARM_SERVICE);
+                mgr_hand.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent_hand);
                 System.exit(0);
                 //closeBLEGatt();
                 Toast.makeText(getApplicationContext(), "Close GATT", Toast.LENGTH_SHORT).show();
